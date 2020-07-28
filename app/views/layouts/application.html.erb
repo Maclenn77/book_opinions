@@ -10,6 +10,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <section class="user">
+      <%= yield %>
+    </section>
+    <main>
+      <%= render 'opinions/index' %>
+    </main>
   </body>
 </html>
