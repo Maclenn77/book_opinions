@@ -1,9 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  fullname: MyString
+  name: 'juan'
+  fullname: 'Juan Paulo'
 
 two:
-  name: MyString
-  fullname: MyString
+  name: 'Yearin'
+  fullname: 'Yearin Kim'
+
+three:
+  name: 'Pedro'
+  fullname: 'Pedro Donda'
+
+four:
+  name: 'Ana'
+  fullname: 'Ana Lillian'

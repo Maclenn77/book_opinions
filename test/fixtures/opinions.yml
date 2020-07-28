@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  belongs_to: 
-  body: MyText
+  belongs_to:
+  body: 'Dummy text of a comment'
 
 two:
-  belongs_to: 
-  body: MyText
+  belongs_to:
+  body: 'Commenting here'
