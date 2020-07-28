@@ -1,0 +1,14 @@
+<h1>Log in</h1>
+
+<div>
+  <div>
+    <%= form_for(:session, url: login_path) do |f| %>
+
+      <%= f.text_field :name %>
+
+      <%= f.submit "Log in" %>
+      <%= link_to 'Sign up', new_user_path %>
+    <% end %>
+
+  </div>
+</div>

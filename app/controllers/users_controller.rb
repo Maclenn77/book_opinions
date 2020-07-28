@@ -1,15 +1,22 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  include SessionsHelper
+
+  # before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if current_user.nil?
+      (redirect_to login_path)
+    else
+      @users = User.all
+    end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
   end
 
   # GET /users/new
@@ -69,6 +76,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :fullname)
+      params.require(:user).permit(:name, :fullname, :token)
     end
 end
