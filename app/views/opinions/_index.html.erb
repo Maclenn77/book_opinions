@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Opinion', new_user_opinion_path(user_id: current_user.id) %>
+<%= link_to 'New Opinion', new_user_opinion_path(user_id: current_user.id) unless current_user.nil? %>
