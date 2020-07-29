@@ -9,13 +9,30 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= render 'layouts/header' %>
-    <section class="user">
-      <%= yield %>
-    </section>
-    <main>
-      <%= render 'opinions/index' %>
-    </main>
+  <body class="container m-0 p-0">
+      <div class="row m-0">
+        <div class="col-2 bg-dark">
+          <%= yield %>
+        </div>
+        <div class="col-10 p-0">
+          <div class="row">
+            <header class="col">
+                <%= render 'layouts/header' %>
+              </header>
+          </div>
+          <main class="container">
+            <div class="row">
+              <div class="col-9">
+                  <%= render 'opinions/index' %>
+              </div>
+              <div class="col-3">
+                <p>No content yet</p>
+              </div>
+            </div>
+
+          </main>
+
+        </div>
+      </div>
   </body>
 </html>
