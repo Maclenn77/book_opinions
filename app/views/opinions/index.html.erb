@@ -17,7 +17,7 @@
     <% else %>
     <% @opinions.each do |opinion| %>
       <tr>
-        <td><%= opinion.belongs_to %></td>
+        <td><%= opinion.title %></td>
         <td><%= opinion.body %></td>
         <td><%= link_to 'Show', user_opinion_path(opinion.user, opinion) %></td>
         <td><%= link_to 'Edit', edit_user_opinion_path(opinion.user, opinion) %></td>

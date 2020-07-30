@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'opinions#index'
 
   resources :opinions, only: [:create]
-  
+
   resources :users do
     resources :opinions, except: [:create]
   end

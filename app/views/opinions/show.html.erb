@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Belongs to:</strong>
-  <%= @opinion.belongs_to %>
+  <strong>Title:</strong>
+  <%= @opinion.title %>
 </p>
 
 <p>
@@ -10,5 +10,5 @@
   <%= @opinion.body %>
 </p>
 
-<%= link_to 'Edit', edit_opinion_path(@opinion) %> |
+<%= link_to 'Edit', edit_user_opinion_path(@opinion) %> |
 <%= link_to 'Back', opinions_path %>
