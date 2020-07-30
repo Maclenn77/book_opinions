@@ -1,9 +1,11 @@
 class OpinionsController < ApplicationController
+  include SessionsHelper
   before_action :set_opinion, only: [:show, :edit, :update, :destroy]
 
   # GET /opinions
   # GET /opinions.json
   def index
+    @opinion = Opinion.new
     @opinions = Opinion.all
   end
 
@@ -13,9 +15,6 @@ class OpinionsController < ApplicationController
   end
 
   # GET /opinions/new
-  def new
-    @opinion = Opinion.new
-  end
 
   # GET /opinions/1/edit
   def edit
@@ -24,11 +23,11 @@ class OpinionsController < ApplicationController
   # POST /opinions
   # POST /opinions.json
   def create
-    @opinion = Opinion.new(opinion_params)
+    @opinion = current_user.opinions.new(opinion_params)
 
     respond_to do |format|
       if @opinion.save
-        format.html { redirect_to @opinion, notice: 'Opinion was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Opinion was successfully created.' }
         format.json { render :show, status: :created, location: @opinion }
       else
         format.html { render :new }
@@ -69,6 +68,6 @@ class OpinionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def opinion_params
-      params.require(:opinion).permit(:belongs_to, :body)
+      params.require(:opinion).permit(:title, :body)
     end
 end

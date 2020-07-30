@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
-  root 'users#index'
+  root 'opinions#index'
 
+  resources :opinions, only: [:create]
+  
   resources :users do
-    resources :opinions
+    resources :opinions, except: [:create]
   end
 
   get 'login', to: 'sessions#new'

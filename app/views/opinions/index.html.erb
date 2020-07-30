@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Opinions</h1>
-
+<%= render 'form', opinion: @opinion %>
 <table>
   <thead>
     <tr>
-      <th>Belongs to</th>
+      <th>Title</th>
       <th>Body</th>
       <th colspan="3"></th>
     </tr>
@@ -19,9 +19,9 @@
       <tr>
         <td><%= opinion.belongs_to %></td>
         <td><%= opinion.body %></td>
-        <td><%= link_to 'Show', opinion %></td>
-        <td><%= link_to 'Edit', edit_user_opinion_path(opinion) %></td>
-        <td><%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_opinion_path(opinion.user, opinion) %></td>
+        <td><%= link_to 'Edit', edit_user_opinion_path(opinion.user, opinion) %></td>
+        <td><%= link_to 'Destroy', user_opinion_path(opinion.user, opinion), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     <% end %>
