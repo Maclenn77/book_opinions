@@ -20,4 +20,13 @@ class User < ApplicationRecord
   def total_followees
     followees.count
   end
+
+  def who_to_follow
+    follow = []
+    users = User.all
+    users.each do |u|
+      follow << u if followed_users.include?(u) == false && (u == self) == false
+    end
+    follow
+  end
 end
