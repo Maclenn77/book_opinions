@@ -1,3 +1,6 @@
+<div class="row">
+  <div class="col-9">
+
 <p id="notice"><%= notice %></p>
 
 <h1>Opinions</h1>
@@ -31,3 +34,11 @@
 <br>
 
 <%= link_to 'New Opinion', new_user_opinion_path(user_id: current_user.id) unless current_user.nil? %>
+
+
+  </div>
+  <div class="col-3">
+    <p><%= current_user.who_to_follow[-1].fullname if current_user %></p>
+    <%= follow_user(current_user.who_to_follow[-1]) if current_user %>
+  </div>
+</div>

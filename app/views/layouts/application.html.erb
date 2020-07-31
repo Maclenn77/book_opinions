@@ -36,14 +36,7 @@
               </header>
           </div>
           <main class="container">
-            <div class="row">
-              <div class="col-9">
-                  <%= yield %>
-              </div>
-              <div class="col-3">
-                <p><%= current_user.who_to_follow[-1].fullname %></p>
-              </div>
-            </div>
+            <%= yield %>
 
           </main>
 

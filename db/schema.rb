@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_30_053242) do
+ActiveRecord::Schema.define(version: 0) do
 
   create_table "followings", force: :cascade do |t|
     t.integer "follower_id", null: false
@@ -37,6 +37,4 @@ ActiveRecord::Schema.define(version: 2020_07_30_053242) do
     t.string "token"
   end
 
-  add_foreign_key "followings", "followees"
-  add_foreign_key "followings", "followers"
 end

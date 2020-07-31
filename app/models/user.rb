@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :opinions
-  has_many :followed_users, foreign_key: :follower_id, class_name: 'Following'
-  has_many :followees, through: :followed_users
+  has_many :followings, foreign_key: :follower_id, class_name: 'Following'
+  has_many :followees, through: :followings
 
   before_create do
     self.token = @token
@@ -14,7 +14,7 @@ class User < ApplicationRecord
   end
 
   def total_followed_users
-    followed_users.count
+    followings.count
   end
 
   def total_followees
@@ -25,7 +25,7 @@ class User < ApplicationRecord
     follow = []
     users = User.all
     users.each do |u|
-      follow << u if followed_users.include?(u) == false && (u == self) == false
+      follow << u if followings.include?(u) == false && (u == self) == false
     end
     follow
   end
