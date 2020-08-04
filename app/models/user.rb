@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   has_many :opinions
   has_many :followings, foreign_key: :follower_id, class_name: 'Following'
-  has_many :followees, through: :followings
+  has_many :followees, foreign_key: :followee_id, class_name: 'Following'
+
+  # scope :who_to_follow, ->(user) { user.}
 
   before_create do
     self.token = @token
@@ -29,4 +31,14 @@ class User < ApplicationRecord
     end
     follow
   end
+
+  def followed?(current_user)
+    current_user = current_user
+    current_user.followings.find_by(followee_id: id)
+  end
+
+  def follow(user)
+    followings.create(followee_id: user.id)
+  end
+
 end

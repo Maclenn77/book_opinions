@@ -38,7 +38,7 @@
 
   </div>
   <div class="col-3">
-    <p><%= current_user.who_to_follow[-1].fullname if current_user %></p>
-    <%= follow_user(current_user.who_to_follow[-1]) if current_user %>
+    <p><%= current_user.who_to_follow[-1].fullname if current_user && !current_user.who_to_follow.empty? %></p>
+    <%= follow(current_user, current_user.who_to_follow[-1]) if current_user %>
   </div>
 </div>

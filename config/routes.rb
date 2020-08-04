@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root 'opinions#index'
 
   resources :opinions, only: [:create]
+  resources :followings, only: %i[destroy create]
 
   resources :users do
     resources :opinions, except: [:create]
-    resources :followings, only: [:create, :destroy]
   end
 
   get 'login', to: 'sessions#new'

@@ -15,11 +15,11 @@
           <span><%= user_profile %></span>
           <div class="row m-0">
               <div class="col text-center">
-                <span class="text-secondary"><strong><%= current_user_following %></strong></span>
+                <span class="text-secondary"><strong><%= followees_of(current_user) %></strong></span>
                 <small class="text-secondary">Following</small>
               </div>
               <div class="col text-center">
-                <span class="text-secondary"><strong><%= current_user_followees  %></strong></span>
+                <span class="text-secondary"><strong><%= following_by(current_user)  %></strong></span>
                 <small class="text-secondary">Followers</small>
               </div>
           </div>

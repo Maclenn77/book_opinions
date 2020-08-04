@@ -8,11 +8,13 @@ module UsersHelper
     end
   end
 
-  def current_user_following
-    current_user.total_followed_users unless current_user.nil?
+  def following_by(current_user)
+    c = current_user
+    c.total_followed_users unless current_user.nil?
   end
 
-  def current_user_followees
-    current_user.total_followees unless current_user.nil?
+  def followees_of(current_user)
+    c = current_user
+    c.total_followees unless current_user.nil?
   end
 end

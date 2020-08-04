@@ -10,23 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_07_28_205653) do
 
   create_table "followings", force: :cascade do |t|
-    t.integer "follower_id", null: false
-    t.integer "followee_id", null: false
+    t.integer "follower_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["followee_id"], name: "index_followings_on_followee_id"
-    t.index ["follower_id"], name: "index_followings_on_follower_id"
+    t.integer "followee_id"
+    t.integer "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x0000560ad1e7c4a8>"
+    t.index "\"followings_id\"", name: "index_on_followee_id"
+    t.index "\"followings_id\"", name: "index_on_follower_id"
   end
 
   create_table "opinions", force: :cascade do |t|
     t.integer "user_id"
+    t.string "title"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "title"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,4 +38,5 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "token"
   end
 
+  add_foreign_key "followings", "users", column: "followee_id"
 end
