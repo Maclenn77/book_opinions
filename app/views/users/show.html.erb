@@ -1,3 +1,6 @@
+<%= image_tag @user.cover.variant(combine_options: {resize: '600x256^', extent: '600x256', gravity: 'Center'}), class: 'cover' %>
+<%= image_tag @user.avatar.variant(combine_options: {resize: '256x256^', extent: '256x256', gravity: 'Center'}), class: 'avatar' %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -12,3 +15,14 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+<div class="bg-light">
+  <% @user.opinions.each do |opinion| %>
+    <p><em><%= "#{@user.fullname} said about " %></em>
+      <%= link_to opinion.title, worldcat_link(opinion) %> </p>
+    <p><%= opinion.body %></p>
+      <span><%= link_to 'Show', user_opinion_path(@user, opinion) %></span>
+      <span><%= link_to 'Edit', edit_opinion_path(opinion), method: :get %></span>
+      <span><%= link_to 'Destroy', user_opinion_path(@user, opinion), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+  <% end %>
+</div>

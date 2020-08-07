@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many :opinions
   has_many :followings, foreign_key: :follower_id, class_name: 'Following'
   has_many :followees, foreign_key: :followee_id, class_name: 'Following'
+  has_one_attached :avatar
+  has_one_attached :cover
 
   before_create do
     self.token = @token
