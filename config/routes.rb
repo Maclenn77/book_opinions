@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   root 'opinions#index'
 
-  resources :opinions, only: [:create]
+  resources :opinions, only: %i[create edit update]
   resources :followings, only: %i[destroy create]
 
   resources :users do
-    resources :opinions, except: [:create]
+    resources :opinions, except: %i[create edit update]
   end
 
   get 'login', to: 'sessions#new'

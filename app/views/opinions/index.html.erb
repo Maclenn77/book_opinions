@@ -5,40 +5,35 @@
 
 <h1>Opinions</h1>
 <%= render 'form', opinion: @opinion %>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% if @opinions.nil? %>
+  <div class="bg-light">
+    <% if current_user.nil? %>
     <%= 'No book opinions' %>
     <% else %>
     <% @opinions.each do |opinion| %>
-      <tr>
-        <td><%= link_to opinion.title, worldcat_link(opinion) %></td>
-        <td><%= opinion.body %></td>
-        <td><%= link_to 'Show', user_opinion_path(opinion.user, opinion) %></td>
-        <td><%= link_to 'Edit', edit_user_opinion_path(opinion.user, opinion) %></td>
-        <td><%= link_to 'Destroy', user_opinion_path(opinion.user, opinion), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <p><em><%= "#{opinion.user.fullname} said about " %></em>
+        <%= link_to opinion.title, worldcat_link(opinion) %> </p>
+      <p><%= opinion.body %></p>
+        <span><%= link_to 'Show', user_opinion_path(opinion.user, opinion) %></span>
+        <span><%= link_to 'Edit', edit_opinion_path(opinion), method: :get %></span>
+        <span><%= link_to 'Destroy', user_opinion_path(opinion.user, opinion), method: :delete, data: { confirm: 'Are you sure?' } %></span>
     <% end %>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
 <br>
 
 <%= link_to 'New Opinion', new_user_opinion_path(user_id: current_user.id) unless current_user.nil? %>
 
-
   </div>
   <div class="col-3">
-    <p><%= current_user.who_to_follow[-1].fullname if current_user && !current_user.who_to_follow.empty? %></p>
-    <%= follow(current_user, current_user.who_to_follow[-1]) if current_user %>
+    <% unless current_user.nil? %>
+      <% current_user.who_to_follow.each do |user| %>
+        <p><b><%= user.fullname %></b></p>
+        <p><b><%= follow(user, current_user) %></b></p>
+      <% end %>
+    <% else %>
+    <%= 'New users' %>
+    <% end %>
   </div>
 </div>

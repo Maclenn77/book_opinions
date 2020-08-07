@@ -1,0 +1,10 @@
+<li class="opinion">
+  <div>
+    <div class='opinion-attribution' >
+      <%= link_to opinion.user.name, user_path(opinion.user), class: 'opinion-author' %>
+    </div>
+  </div>
+  <p class="opinion-content">
+    <%= post.body %>
+  </p>
+</li>

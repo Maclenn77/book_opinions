@@ -6,7 +6,11 @@ class OpinionsController < ApplicationController
   # GET /opinions.json
   def index
     @opinion = Opinion.new
-    @opinions = Opinion.all
+    @opinions = if current_user
+                  timeline_opinions(current_user.followed)
+                else
+                  Opinion.all
+                end
   end
 
   # GET /opinions/1
@@ -17,8 +21,7 @@ class OpinionsController < ApplicationController
   # GET /opinions/new
 
   # GET /opinions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /opinions
   # POST /opinions.json
@@ -39,9 +42,11 @@ class OpinionsController < ApplicationController
   # PATCH/PUT /opinions/1
   # PATCH/PUT /opinions/1.json
   def update
+    @opinion = set_opinion
+
     respond_to do |format|
       if @opinion.update(opinion_params)
-        format.html { redirect_to @opinion, notice: 'Opinion was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Opinion was successfully updated.' }
         format.json { render :show, status: :ok, location: @opinion }
       else
         format.html { render :edit }
@@ -55,7 +60,7 @@ class OpinionsController < ApplicationController
   def destroy
     @opinion.destroy
     respond_to do |format|
-      format.html { redirect_to opinions_url, notice: 'Opinion was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Opinion was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,6 +69,14 @@ class OpinionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_opinion
       @opinion = Opinion.find(params[:id])
+    end
+
+    def timeline_opinions(list_of_followees)
+      timeline_opinions = Opinion.user_opinions(current_user)
+      list_of_followees.each do |followee|
+        timeline_opinions += Opinion.user_opinions(followee)
+      end
+      timeline_opinions
     end
 
     # Only allow a list of trusted parameters through.

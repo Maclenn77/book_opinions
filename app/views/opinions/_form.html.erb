@@ -1,3 +1,5 @@
+<div class="bg-light m-4">
+  <h2>Share your book opinions</h2>
 <%= form_with model: @opinion, local: true do |form| %>
   <% if opinion.errors.any? %>
     <div id="error_explanation">
@@ -12,13 +14,14 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_area :title %>
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+    <h3><%= form.label :title %></h3>
+    <%= form.text_area :title, placeholder: "Hamlet" %>
+    <h4><%= form.label :body %></h4>
+    <%= form.text_area :body, placeholder: "It's an excellent book" %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>
