@@ -1,5 +1,7 @@
+<div class="row">
+  <div class="col-9">
 <%= image_tag @user.cover.variant(combine_options: {resize: '600x256^', extent: '600x256', gravity: 'Center'}), class: 'cover' %>
-<%= image_tag @user.avatar.variant(combine_options: {resize: '256x256^', extent: '256x256', gravity: 'Center'}), class: 'avatar' %>
+
 
 <p id="notice"><%= notice %></p>
 
@@ -25,4 +27,20 @@
       <span><%= link_to 'Edit', edit_opinion_path(opinion), method: :get %></span>
       <span><%= link_to 'Destroy', user_opinion_path(@user, opinion), method: :delete, data: { confirm: 'Are you sure?' } %></span>
   <% end %>
+</div>
+</div>
+    <div class="col-3">
+      <%= image_tag @user.avatar.variant(combine_options: {resize: '100x100^', extent: '100x100', gravity: 'Center'}), class: 'avatar' %>
+      <p><b><%= @user.fullname %></b></p>
+      <p><b><%= follow(@user, current_user) %></b></p>
+      <div class="row">
+        <div class="col-3">
+          <% @followers.each do |f| %>
+          <%= f.follower.fullname %>
+          <%= follow(f.follower, current_user) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
 </div>

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if current_user.nil?
       (redirect_to login_path)
     else
-      @users = User.all
+      @followings = current_user.following_users
     end
   end
 
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = set_user
+    @followers = @user.last_followers
   end
 
   # GET /users/new
@@ -74,7 +75,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.includes(:opinions).find(params[:id])
+      @user = User.includes(:opinions, followees: :follower).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

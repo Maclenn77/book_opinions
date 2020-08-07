@@ -16,8 +16,7 @@ class User < ApplicationRecord
   end
 
   def following_users
-    followings_array = followings.map(&followee_id)
-    followings_array.compact
+    followings.includes(:followee)
   end
 
   def total_followed_users
@@ -48,6 +47,10 @@ class User < ApplicationRecord
 
   def who_to_follow
     User.where.not(id: followed)
+  end
+
+  def last_followers
+    followees.limit(3)
   end
 
 end

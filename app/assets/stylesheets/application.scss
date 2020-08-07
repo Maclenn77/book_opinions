@@ -15,9 +15,14 @@
 
 body {
   background-color: #ecf0f1;
-  width: 100vh;
+  width: 100%;
+  margin: 0;
 }
 
-.avatar {
-  float: left;
+.cover {
+  width: 100%;
+}
+
+.container {
+  max-width: 100%;
 }

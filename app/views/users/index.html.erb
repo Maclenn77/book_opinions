@@ -12,13 +12,11 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <% @followings.each do |user| %>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.fullname %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= user.followee.name %></td>
+        <td><%= user.followee.fullname %></td>
+        <td><%= follow(user.followee, current_user) %></td>
       </tr>
     <% end %>
   </tbody>
