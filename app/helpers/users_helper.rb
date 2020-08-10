@@ -17,8 +17,5 @@ module UsersHelper
     c = current_user
     c.total_followees unless current_user.nil?
   end
-
-  def last_followers(user)
-    user.followed[0..2]
-  end
+  
 end

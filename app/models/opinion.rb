@@ -2,6 +2,7 @@ class Opinion < ApplicationRecord
   belongs_to :user
 
   scope :user_opinions, ->(user) { where(user_id: user) }
+  scope :desc, -> { order("created_at DESC")}
 
   def modify_title
     t = title.dup

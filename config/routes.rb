@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :opinions, except: %i[create edit update]
+    resources :followings, only: [:index]
   end
 
   get 'login', to: 'sessions#new'

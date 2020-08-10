@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-9">
-<%= image_tag @user.cover.variant(combine_options: {resize: '600x256^', extent: '600x256', gravity: 'Center'}), class: 'cover' %>
+<%= image_tag @user.cover.variant(combine_options: {resize: '600x256^', extent: '600x256', gravity: 'Center'}), class: 'cover' if @user.cover.attachment %>
 
 
 <p id="notice"><%= notice %></p>
@@ -30,7 +30,7 @@
 </div>
 </div>
     <div class="col-3">
-      <%= image_tag @user.avatar.variant(combine_options: {resize: '100x100^', extent: '100x100', gravity: 'Center'}), class: 'avatar' %>
+      <%= image_tag @user.avatar.variant(combine_options: {resize: '100x100^', extent: '100x100', gravity: 'Center'}), class: 'avatar' if @user.avatar.attachment %>
       <p><b><%= @user.fullname %></b></p>
       <p><b><%= follow(@user, current_user) %></b></p>
       <div class="row">

@@ -9,7 +9,7 @@ class OpinionsController < ApplicationController
     @opinions = if current_user
                   timeline_opinions(current_user.followed)
                 else
-                  Opinion.all
+                  Opinion.includes(:user).all.desc
                 end
   end
 
@@ -72,9 +72,9 @@ class OpinionsController < ApplicationController
     end
 
     def timeline_opinions(list_of_followees)
-      timeline_opinions = Opinion.user_opinions(current_user)
+      timeline_opinions = Opinion.includes(:user).user_opinions(current_user)
       list_of_followees.each do |followee|
-        timeline_opinions += Opinion.user_opinions(followee)
+        timeline_opinions += Opinion.includes(:user).user_opinions(followee)
       end
       timeline_opinions
     end
