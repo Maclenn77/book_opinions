@@ -1,9 +1,14 @@
 <div class="row">
   <div class="col-9">
+    <div class="row">
+      <div class="col">
+        <p class="m-1">Opinions</p>
+      </div>
+
+    </div>
 
 <p id="notice"><%= notice %></p>
 
-<h1>Opinions</h1>
 <%= render 'form', opinion: @opinion %>
 
   <div class="bg-light">
@@ -11,12 +16,16 @@
     <%= 'No book opinions' %>
     <% else %>
     <% @opinions.each do |opinion| %>
-      <p><em><%= "#{opinion.user.fullname} said about " %></em>
-        <%= link_to opinion.title, worldcat_link(opinion) %> </p>
-      <p><%= opinion.body %></p>
+    <div class="m-2">
+      <%= image_tag opinion.user.avatar.variant(combine_options: {resize: '60x60^', extent: '60x60', gravity: 'Center'}), class: 'avatar m-2 rounded float-left' if (opinion.user.avatar.attachment) %>
+      <p class="font-weight-bold mb-0"><%= link_to opinion.user.fullname, user_path(opinion.user) %>
+         <%= " said about " %>
+         <em><%= link_to opinion.title, worldcat_link(opinion) %> </em></p>
+      <p class="text-secondary mb-1"><%= opinion.body %></p>
         <span><%= link_to 'Show', user_opinion_path(opinion.user, opinion) %></span>
         <span><%= link_to 'Edit', edit_opinion_path(opinion), method: :get %></span>
         <span><%= link_to 'Destroy', user_opinion_path(opinion.user, opinion), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+    </div>
     <% end %>
     <% end %>
   </div>

@@ -12,6 +12,7 @@
  */
 
 @import "bootstrap";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 body {
   background-color: #ecf0f1;
@@ -25,4 +26,8 @@ body {
 
 .container {
   max-width: 100%;
+}
+
+.current_user {
+  font-size: 0.6rem;
 }
