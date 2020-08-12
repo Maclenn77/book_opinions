@@ -32,12 +32,13 @@
     <div class="col-3">
       <%= image_tag @user.avatar.variant(combine_options: {resize: '80x80^', extent: '80x80', gravity: 'Center'}), class: 'avatar rounded-circle m-2' if @user.avatar.attachment %>
       <p><b><%= @user.fullname %></b></p>
-      <p><b><%= follow(@user, current_user) %></b></p>
+      <p><i class="material-icons"><%= follow(@user, current_user) %></i></p>
       <div class="row">
         <div class="col-3">
           <% @followers.each do |f| %>
+          <%= circle_avatar(f.follower)%>
           <%= f.follower.fullname %>
-          <%= follow(f.follower, current_user) %>
+          <i class="material-icons"><%= follow(f.follower, current_user) %></i>
           <% end %>
         </div>
       </div>

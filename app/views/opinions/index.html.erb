@@ -17,7 +17,7 @@
     <% else %>
     <% @opinions.each do |opinion| %>
     <div class="m-2">
-      <%= image_tag opinion.user.avatar.variant(combine_options: {resize: '60x60^', extent: '60x60', gravity: 'Center'}), class: 'avatar m-2 rounded float-left' if (opinion.user.avatar.attachment) %>
+      <%= avatar(opinion.user) %>
       <p class="font-weight-bold mb-0"><%= link_to opinion.user.fullname, user_path(opinion.user) %>
          <%= " said about " %>
          <em><%= link_to opinion.title, worldcat_link(opinion) %> </em></p>
@@ -36,10 +36,16 @@
 
   </div>
   <div class="col-3">
+    <%= "Who to follow" %>
     <% unless current_user.nil? %>
+    <div class="row">
+      <div class="col">
       <% current_user.who_to_follow.each do |user| %>
+        <%= circle_avatar(user) %>
         <p><b><%= user.fullname %></b></p>
-        <p><b><%= follow(user, current_user) %></b></p>
+        <i class="material-icons"><%= follow(user, current_user) %></i>
+        </div>
+      </div>
       <% end %>
     <% else %>
     <%= 'New users' %>
