@@ -1,5 +1,5 @@
-<div class="bg-light m-4">
-  <small class="h5 text-secondary">Share your book opinions</small>
+<div class="bg-light rounded border gray mb-4">
+  <small class="h5 text-secondary m-2 py-1">Share your book opinions</small>
 <%= form_with model: @opinion, local: true do |form| %>
   <% if opinion.errors.any? %>
     <div id="error_explanation">
@@ -13,15 +13,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <h3><%= form.label :title %></h3>
-    <%= form.text_area :title, placeholder: "Hamlet" %>
-    <h4><%= form.label :body %></h4>
-    <%= form.text_area :body, placeholder: "It's an excellent book" %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="form-group m-2">
+    <%= form.text_field :title, placeholder: "Book's Title or Author. Example: 'Hamlet' or 'Shakespeare'", class: 'form-control center, my-2' %>
+    <%= form.text_area :body, placeholder: 'Comment about the book', class: 'form-control mb-2' %>
+    <div class="actions text-right">
+      <%= form.submit 'Post', class: 'btn btn-primary'%>
+    </div>
+</div>
 <% end %>
 </div>

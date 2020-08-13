@@ -11,16 +11,17 @@
 
 <%= render 'form', opinion: @opinion %>
 
-  <div class="bg-light">
+  <div class="bg-light border gray rounded">
     <% if current_user.nil? %>
     <%= 'No book opinions' %>
     <% else %>
+    <div class="">
+      <p class="m-2 p-1 text-primary border-bottom gray">All opinions</p>
+    </div>
     <% @opinions.each do |opinion| %>
     <div class="m-2">
       <%= avatar(opinion.user) %>
-      <p class="font-weight-bold mb-0"><%= link_to opinion.user.fullname, user_path(opinion.user) %>
-         <%= " said about " %>
-         <em><%= link_to opinion.title, worldcat_link(opinion) %> </em></p>
+      <p class="mb-0"><%= opinion(opinion.user, opinion) %></p>
       <p class="text-secondary mb-1"><%= opinion.body %></p>
         <span><%= link_to 'Show', user_opinion_path(opinion.user, opinion) %></span>
         <span><%= link_to 'Edit', edit_opinion_path(opinion), method: :get %></span>
@@ -29,10 +30,6 @@
     <% end %>
     <% end %>
   </div>
-
-<br>
-
-<%= link_to 'New Opinion', new_user_opinion_path(user_id: current_user.id) unless current_user.nil? %>
 
   </div>
   <div class="col-3">
