@@ -18,10 +18,13 @@
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 
-<div class="bg-light">
+<div class="bg-light p-2 m-1 rounded border-secondary">
+  <div class="m-2">
+      <span>All opinions</span>
+  </div>
   <% @user.opinions.each do |opinion| %>
-    <p><em><%= "#{@user.fullname} said about " %></em>
-      <%= link_to opinion.title, worldcat_link(opinion) %> </p>
+    <%= avatar(@user) %>
+    <p><%= opinion(@user, opinion) %></p>
     <p><%= opinion.body %></p>
       <span><%= link_to 'Show', user_opinion_path(@user, opinion) %></span>
       <span><%= link_to 'Edit', edit_opinion_path(opinion), method: :get %></span>
@@ -30,15 +33,17 @@
 </div>
 </div>
     <div class="col-3">
+      <i class="material-icons"><%= follow(@user, current_user) %></i>
       <%= image_tag @user.avatar.variant(combine_options: {resize: '80x80^', extent: '80x80', gravity: 'Center'}), class: 'avatar rounded-circle m-2' if @user.avatar.attachment %>
       <p><b><%= @user.fullname %></b></p>
-      <p><i class="material-icons"><%= follow(@user, current_user) %></i></p>
       <div class="row">
         <div class="col-3">
           <% @followers.each do |f| %>
+          <div class="d-flex">
           <%= circle_avatar(f.follower)%>
           <%= f.follower.fullname %>
           <i class="material-icons"><%= follow(f.follower, current_user) %></i>
+          </div>
           <% end %>
         </div>
       </div>

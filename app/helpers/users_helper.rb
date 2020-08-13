@@ -18,6 +18,10 @@ module UsersHelper
     c.total_followees unless current_user.nil?
   end
 
+  def opinion(user, opinion)
+    link_to(user.fullname, user_path(user), class: 'font-weight-bold') + " said about " + link_to(opinion.title, worldcat_link(opinion), class:"font-italic")
+  end
+
   def avatar(user)
     if user.avatar.attached?
       image_tag user.avatar.variant(combine_options: {resize: '60x60^', extent: '60x60', gravity: 'Center'} ), class: 'avatar m-2 rounded float-left'

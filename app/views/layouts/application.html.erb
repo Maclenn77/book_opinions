@@ -27,6 +27,8 @@
           </div>
           <div class="row m-0 text-secondary">
             <ul>
+              <li><i class="material-icons">home</i><%= link_to 'Home', root_path %></li>
+              <li><i class="material-icons">person</i><%= link_to 'Profile', user_path(current_user) %></li>
               <li><%= link_to 'Log out', signout_path, method: :delete, data: {confirm: 'Are you sure ?'} %></li>
             </ul>
           </div>
