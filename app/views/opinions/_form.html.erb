@@ -1,5 +1,5 @@
-<div class="bg-light rounded border gray mb-4">
-  <small class="h5 text-secondary m-2 py-1">Share your book opinions</small>
+<div class="bg-light rounded border gray mb-2 p-2">
+  <small class="h5 text-secondary m-2 py-4">Share your book opinions</small>
 <%= form_with model: @opinion, local: true do |form| %>
   <% if opinion.errors.any? %>
     <div id="error_explanation">

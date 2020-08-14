@@ -14,7 +14,7 @@
       <div class="row m-0">
         <div class="col-2 bg-dark text-secondary">
           <%= image_tag current_user.avatar.variant(combine_options: {resize: '40x40^', extent: '40x40', gravity: 'Center'}), class: 'avatar m-2 rounded' if (current_user && current_user.avatar.attachment) %>
-          <small class="current_user"><%= link_to user_profile, user_path(current_user), class: 'text-secondary' %></small>
+          <small class="current_user"><%= session_nav %></small>
           <div class="row m-0">
               <div class="col text-center">
                 <span class="text-secondary"><strong><%= following_by(current_user) %></strong></span>
@@ -28,7 +28,7 @@
           <div class="row m-0 text-secondary">
             <ul>
               <li><i class="material-icons">home</i><%= link_to 'Home', root_path %></li>
-              <li><i class="material-icons">person</i><%= link_to 'Profile', user_path(current_user) %></li>
+              <li><i class="material-icons">person</i><%= link_to 'Profile', user_path(current_user) unless current_user.nil? %></li>
               <li><%= link_to 'Log out', signout_path, method: :delete, data: {confirm: 'Are you sure ?'} %></li>
             </ul>
           </div>

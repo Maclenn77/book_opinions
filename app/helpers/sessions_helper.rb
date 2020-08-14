@@ -22,4 +22,18 @@ module SessionsHelper
     cookies.delete(:token)
     @current_user = nil
   end
+
+  def session_icon
+    return link_to('exit_to_app', signout_path, class: 'text-dark',
+                   method: :delete, data: { confirm: 'Are you sure ?' }) unless current_user.nil?
+    link_to('power_settings_new', login_path, class: 'text-dark' )
+  end
+
+  def session_nav
+    if current_user
+      link_to user_profile, user_path(current_user), class: 'text-secondary'
+    else
+      render 'sessions/form'
+    end
+  end
 end

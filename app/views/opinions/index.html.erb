@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-9">
     <div class="row">
-      <div class="col">
+      <div class="col border-bottom gray">
         <p class="m-1">Opinions</p>
       </div>
 
@@ -9,11 +9,20 @@
 
 <p id="notice"><%= notice %></p>
 
-<%= render 'form', opinion: @opinion %>
+<%= render 'form', opinion: @opinion unless current_user.nil? %>
 
   <div class="bg-light border gray rounded">
     <% if current_user.nil? %>
-    <%= 'No book opinions' %>
+    <div class="jumbotron">
+      <h1 class="display-4"><%= 'Welcome to Daiuk!' %></h1>
+      <p class="lead">Read and write reviews of your favorite books</p>
+      <hr class="my-4">
+      <p>Create and account and don't miss anything about the last trendy books</p>
+      <p class="lead">
+        <%= link_to 'Sign up', new_user_path, class: 'btn btn-primary' %>
+        <%= link_to 'Log in', login_path, class: 'btn btn-primary' %>
+      </p>
+    </div>
     <% else %>
     <div class="">
       <p class="m-2 p-1 text-primary border-bottom gray">All opinions</p>
@@ -32,20 +41,30 @@
   </div>
 
   </div>
-  <div class="col-3">
-    <%= "Who to follow" %>
+  <div class="col-3 border gray">
     <% unless current_user.nil? %>
+    <span class="p-2 border-bottom gray"><%= "Who to follow" %></span
     <div class="row">
-      <div class="col">
+      <div class="col my-5">
       <% current_user.who_to_follow.each do |user| %>
         <%= circle_avatar(user) %>
         <p><b><%= user.fullname %></b></p>
         <i class="material-icons"><%= follow(user, current_user) %></i>
-        </div>
-      </div>
       <% end %>
+    </div>
     <% else %>
-    <%= 'New users' %>
+    <div class="row">
+      <span class="p-2 border-bottom gray"><%= 'New users' %></span
+    </div>
+    <div class="row">
+
+
+    <% @last_users.each do |user| %>
+    <div class="col my-5">
+      <%= circle_avatar(user) %>
+      <p><b><%= user.fullname %></b></p>
+
     <% end %>
-  </div>
+    </div>
+    <% end %>
 </div>

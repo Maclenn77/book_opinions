@@ -11,6 +11,7 @@ class OpinionsController < ApplicationController
                 else
                   Opinion.includes(:user).all.desc
                 end
+    @last_users = User.last_users if current_user.nil?
   end
 
   # GET /opinions/1

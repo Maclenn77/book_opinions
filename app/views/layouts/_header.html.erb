@@ -1,24 +1,11 @@
 <nav class="navbar navbar-primary bg-primary">
-  <%= link_to '다육', root_path, class: "navbar-brand text-light" %>
-	<div>
-		<ul>
-			<% unless current_page?(root_path) %>
-				<li><%= link_to 'Home', root_path  %></li>
-			<% end %>
-			<% unless current_user.nil? || current_page?(user_path(current_user)) %>
-				<li><%= link_to 'Profile', user_path(current_user)  %></li>
-			<% end %>
-		</ul>
-	</div>
-	<% unless current_user.nil? %>
-		Welcome <%= current_user.name.to_s  %>
-		<br>
-		<%= link_to 'Log out', signout_path, method: :delete, data: {confirm: 'Are you sure ?'} %>
-		<br>
-		<%= link_to 'New opinion', new_user_opinion_path(current_user) unless  current_page?(new_user_opinion_path(current_user)) || current_user.nil? %>
-	<% else %>
-		<%= link_to 'Log in', login_path unless current_page?(login_path)%>
-		<br>
-		<%= link_to 'Sign Up', users_path unless current_page?(users_path) %>
-	<% end %>
+  <div class="col-9">
+    <%= link_to '다육', root_path, class: "navbar-brand text-light" %>
+    <span class='text-light mr-auto'>  <%= "Welcome,#{current_user.name.to_s}" unless current_user.nil? %></span>
+  </div>
+  <div class="col justify-content-between">
+    <i class="material-icons px-2"><%= link_to 'create', new_user_opinion_path(current_user), class: 'text-dark' unless  current_user.nil? %></i>
+    <i class="material-icons px-2"><%= link_to 'settings', edit_user_path(current_user), class: 'text-dark' unless  current_user.nil? %></i>
+    <i class="material-icons px-2"><%= session_icon %></i>
+  </div>
 </nav>

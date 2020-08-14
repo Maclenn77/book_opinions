@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_one_attached :cover
 
+  scope :last_users, -> { all.limit(3).order('created_at DESC')}
+
   before_create do
     self.token = @token
   end
