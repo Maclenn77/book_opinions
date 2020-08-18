@@ -11,8 +11,8 @@
   </head>
 
   <body class="container m-0 p-0">
-      <div class="row m-0">
-        <div class="col-2 bg-dark text-secondary">
+      <div class="row m-0 p-0">
+        <div class="col-2 bg-dark text-secondary p-0">
           <%= image_tag current_user.avatar.variant(combine_options: {resize: '40x40^', extent: '40x40', gravity: 'Center'}), class: 'avatar m-2 rounded' if (current_user && current_user.avatar.attachment) %>
           <small class="current_user"><%= session_nav %></small>
           <div class="row m-0">
@@ -26,11 +26,11 @@
               </div>
           </div>
           <div class="row m-0 text-secondary">
-            <ul>
-              <li><i class="material-icons">home</i><%= link_to 'Home', root_path %></li>
-              <li><i class="material-icons">person</i><%= link_to 'Profile', user_path(current_user) unless current_user.nil? %></li>
-              <li><%= link_to 'Log out', signout_path, method: :delete, data: {confirm: 'Are you sure ?'} %></li>
-            </ul>
+            <div class='col flex-column p-0'>
+              <div class="bg-primary p-2 d-flex align-self-center"><i class="material-icons text-light p-1" >home</i><%= link_to 'Home', root_path, class: 'text-light' %></div>
+              <div class="p-2"><i class="material-icons text-light">person</i><%= link_to 'Profile', user_path(current_user), class: 'text-light' unless current_user.nil? %></div>
+              <div class="p-2"><%= link_to 'Log out', signout_path, class: 'text-light', method: :delete, data: {confirm: 'Are you sure ?'} %></div>
+            </div>
           </div>
         </div>
         <div class="col-10 p-0">
