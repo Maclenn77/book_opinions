@@ -31,7 +31,7 @@ class User < ApplicationRecord
 
   def followed?(user)
     u = user
-    u.followings.find_by(followee_id: id)
+    u.followings.find_by(followee_id: id) unless u.nil?
   end
 
   # def follow(user)

@@ -24,9 +24,9 @@ module UsersHelper
 
   def avatar(user)
     if user.avatar.attached?
-      image_tag user.avatar.variant(combine_options: {resize: '60x60^', extent: '60x60', gravity: 'Center'} ), class: 'avatar m-2 rounded float-left'
+      image_tag user.avatar.variant(combine_options: {resize: '40x40^', extent: '40x40', gravity: 'Center'} ), class: 'avatar m-2 rounded float-left'
     else
-      image_tag('avatar.png', alt: user.name, width: 60, height: 60, class: 'avatar m-2 rounded float-left')
+      image_tag('avatar.png', alt: user.name, width: 40, height: 40, class: 'avatar m-2 rounded float-left')
     end
   end
 

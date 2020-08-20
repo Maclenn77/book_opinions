@@ -30,10 +30,8 @@ module SessionsHelper
   end
 
   def session_nav
-    if current_user
+    unless current_user.nil?
       link_to user_profile, user_path(current_user), class: 'text-secondary'
-    else
-      render 'sessions/form'
     end
   end
 end

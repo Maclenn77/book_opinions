@@ -11,17 +11,23 @@
   </head>
 
   <body class="container m-0 p-0">
-      <div class="row m-0 p-0">
+    <div class="row m-0 p-0">
+      <div class="col-2 align-items-baseline bg-dark text-secondary p-0">
+          <%= render 'layouts/profile' %>
+      </div>
+      <%= render 'layouts/header' %>
+    </div>
+    <%= yield %>
+
+    <!-- <div class="row m-0 p-0">
         <div class="col-2 bg-dark text-secondary p-0">
-          <%= image_tag current_user.avatar.variant(combine_options: {resize: '40x40^', extent: '40x40', gravity: 'Center'}), class: 'avatar m-2 rounded' if (current_user && current_user.avatar.attachment) %>
-          <small class="current_user"><%= session_nav %></small>
           <div class="row m-0">
               <div class="col text-center">
-                <span class="text-secondary"><strong><%= following_by(current_user) %></strong></span>
+                <span class="text-secondary"><strong></strong></span>
                 <small class="text-secondary">Following</small>
               </div>
               <div class="col text-center">
-                <span class="text-secondary"><strong><%= followees_of(current_user) %></strong></span>
+                <span class="text-secondary"><strong> %></strong></span>
                 <small class="text-secondary">Followers</small>
               </div>
           </div>
@@ -33,18 +39,12 @@
             </div>
           </div>
         </div>
-        <div class="col-10 p-0">
-          <div class="row">
-            <header class="col">
-                <%= render 'layouts/header' %>
-              </header>
-          </div>
           <main class="container">
-            <%= yield %>
+
 
           </main>
 
         </div>
-      </div>
+      </div> -->
   </body>
 </html>

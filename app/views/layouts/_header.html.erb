@@ -1,11 +1,10 @@
-<nav class="navbar navbar-primary bg-primary">
-  <div class="col-9">
-    <%= link_to '다육', root_path, class: "navbar-brand text-light" %>
+<nav class="navbar navbar-primary bg-primary col-7">
+    <%= link_to '다육 DAIUK', root_path, class: "navbar-brand text-light" %>
     <span class='text-light mr-auto'>  <%= "Welcome,#{current_user.name.to_s}" unless current_user.nil? %></span>
-  </div>
-  <div class="col justify-content-between">
-    <i class="material-icons px-2"><%= link_to 'create', new_user_opinion_path(current_user), class: 'text-dark' unless  current_user.nil? %></i>
-    <i class="material-icons px-2"><%= link_to 'settings', edit_user_path(current_user), class: 'text-dark' unless  current_user.nil? %></i>
-    <i class="material-icons px-2"><%= session_icon %></i>
-  </div>
+
 </nav>
+<div class="justify-content-between bg-primary col-3">
+  <i class="material-icons p-2"><%= link_to 'create', new_user_opinion_path(current_user), class: 'text-dark' unless  current_user.nil? %></i>
+  <i class="material-icons p-2"><%= link_to 'settings', edit_user_path(current_user), class: 'text-dark' unless  current_user.nil? %></i>
+  <i class="material-icons p-2"><%= session_icon %></i>
+</div>
