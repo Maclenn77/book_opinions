@@ -31,9 +31,8 @@
     </div>
   </div>
   <div class="col-7">
-    <div class="">
+    <div class="bg-light rounded border gray mx-4 p-2">
       <p class="m-2 p-1 text-primary border-bottom gray">All opinions</p>
-    </div>
     <% @opinions.each do |opinion| %>
     <div class="m-2">
       <%= avatar(opinion.user) %>
@@ -44,6 +43,7 @@
         <span><%= link_to 'Destroy', user_opinion_path(opinion.user, opinion), method: :delete, data: { confirm: 'Are you sure?' } %></span>
     </div>
     <% end %>
+    </div>
   </div>
 </div>
 <% end %>
