@@ -11,6 +11,10 @@
  * It is generally better to create a new file per style scope.
  */
 
+ $theme-colors: (
+   "primary": #54abed
+ );
+
 @import "bootstrap";
 
 body {
@@ -35,8 +39,16 @@ span.border-bottom {
   border-width: 5px;
 }
 
-a:hover.material-icons {
+a:hover {
   text-decoration: none;
+}
+
+a[rel*="add_circle"] {
+  color: gray;
+}
+
+p.border-bottom {
+  border: 5px;
 }
 
 h5 {

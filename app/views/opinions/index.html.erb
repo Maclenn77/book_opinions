@@ -22,11 +22,7 @@
     <%= render 'form', opinion: @opinion unless current_user.nil? %>
   </div>
   <div class="col-3">
-    <% current_user.who_to_follow.each do |user| %>
-      <%= circle_avatar(user) %>
-      <p><b><%= user.fullname %></b></p>
-      <i class="material-icons"><%= follow(user, current_user) %></i>
-    <% end %>
+    <%= render 'users/followers' %>
   </div>
 </div>
 <div class="row m-0 p-0">
