@@ -12,39 +12,11 @@
 
   <body class="container m-0 p-0">
     <div class="row m-0 p-0">
-      <div class="col-2 align-items-baseline bg-dark text-secondary p-0">
+      <div class="col-2 d-flex justify-content-center align-items-center bg-dark text-secondary p-0">
           <%= render 'layouts/profile' %>
       </div>
       <%= render 'layouts/header' %>
     </div>
     <%= yield %>
-
-    <!-- <div class="row m-0 p-0">
-        <div class="col-2 bg-dark text-secondary p-0">
-          <div class="row m-0">
-              <div class="col text-center">
-                <span class="text-secondary"><strong></strong></span>
-                <small class="text-secondary">Following</small>
-              </div>
-              <div class="col text-center">
-                <span class="text-secondary"><strong> %></strong></span>
-                <small class="text-secondary">Followers</small>
-              </div>
-          </div>
-          <div class="row m-0 text-secondary">
-            <div class='col flex-column p-0'>
-              <div class="bg-primary p-2 d-flex align-self-center"><i class="material-icons text-light p-1" >home</i><%= link_to 'Home', root_path, class: 'text-light' %></div>
-              <div class="p-2"><i class="material-icons text-light">person</i><%= link_to 'Profile', user_path(current_user), class: 'text-light' unless current_user.nil? %></div>
-              <div class="p-2"><%= link_to 'Log out', signout_path, class: 'text-light', method: :delete, data: {confirm: 'Are you sure ?'} %></div>
-            </div>
-          </div>
-        </div>
-          <main class="container">
-
-
-          </main>
-
-        </div>
-      </div> -->
   </body>
 </html>

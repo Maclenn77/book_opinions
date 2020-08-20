@@ -9,7 +9,4 @@ module ApplicationHelper
                                                     followee_id: user.id), method: :post)
     end
   end
-
-  def hh
-  end
 end

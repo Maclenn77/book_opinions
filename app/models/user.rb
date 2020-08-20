@@ -29,6 +29,10 @@ class User < ApplicationRecord
     followees.count
   end
 
+  def total_opinions
+    opinions.count
+  end
+
   def followed?(user)
     u = user
     u.followings.find_by(followee_id: id) unless u.nil?

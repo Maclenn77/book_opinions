@@ -8,14 +8,19 @@ module UsersHelper
     end
   end
 
-  def following_by(current_user)
-    c = current_user
-    c.total_followed_users unless current_user.nil?
+  def following_by(user)
+    c = user
+    c.total_followed_users unless user.nil?
   end
 
-  def followees_of(current_user)
-    c = current_user
-    c.total_followees unless current_user.nil?
+  def followees_of(user)
+    c = user
+    c.total_followees unless user.nil?
+  end
+
+  def opinions_of(user)
+    c = user
+    c.total_opinions unless user.nil?
   end
 
   def opinion(user, opinion)
@@ -38,4 +43,19 @@ module UsersHelper
     end
   end
 
+  def book_cover(user)
+    if user.cover.attachment
+      image_tag user.cover.variant(combine_options: {resize: '600x256^', extent: '600x256', gravity: 'Center'}), class: 'cover'
+    else
+      image_tag('cover-default.jpg', alt: 'default cover', width: 600, height: 256, class: 'cover')
+    end
+  end
+
+  def big_circle_avatar(user)
+    if user.avatar.attached?
+      image_tag user.avatar.variant(combine_options: {resize: '100x100^', extent: '100x100', gravity: 'Center'} ), class: 'avatar m-2 rounded-circle float-left'
+    else
+      image_tag('avatar.png', alt: user.name, width: 100, height: 100, class: 'avatar m-2 rounded-circle')
+    end
+  end
 end
