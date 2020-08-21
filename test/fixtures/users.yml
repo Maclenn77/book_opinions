@@ -1,17 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+juan:
   name: 'juan'
   fullname: 'Juan Paulo'
 
-two:
+yearin:
   name: 'Yearin'
-  fullname: 'Yearin Kim'
+  fullname: 'Yearin Gim'
 
-three:
+pedro:
   name: 'Pedro'
   fullname: 'Pedro Donda'
 
-four:
+ana:
   name: 'Ana'
   fullname: 'Ana Lillian'
+
+jose:
+  name: 'Jose'
+  fullname: 'Jose Jose'
