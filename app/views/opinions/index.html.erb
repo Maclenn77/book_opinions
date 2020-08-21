@@ -1,15 +1,17 @@
 <% if current_user.nil? %>
   <%= render 'opinions/welcome' %>
 <% else %>
-<div class="row border-bottom gray m-0 p-0 align-items-end">
+<div class="row m-0 p-0 align-items-stretch">
   <div class="col-2 bg-dark text-secondary m-0 p-0">
       <%= render 'layouts/follows' unless current_user.nil? %>
   </div>
-  <div class="col-7 m-0 p-0">
-      <span class="border-bottom border-primary m-0 p-0">OPINIONS</span>
+  <div class="col-7 m-0 p-0 border-bottom align-self-end">
+    <div class="">
+      <span class="border-bottom border-primary m-0 p-0 text-secondary"><b>OPINIONS</b></span>
+    </div>
   </div>
-  <div class="col-3">
-    <span>Who to follow</span>
+  <div class="col-3 border-left d-flex">
+    <span class="align-self-end border-bottom text-secondary"><b>WHO TO FOLLOW</b></span>
   </div>
 </div>
 <div class="row m-0 p-0">
@@ -21,7 +23,7 @@
   <div class="col-7">
     <%= render 'form', opinion: @opinion unless current_user.nil? %>
   </div>
-  <div class="col-3">
+  <div class="col-3 border-left p-3">
     <%= render 'users/followers' %>
   </div>
 </div>
