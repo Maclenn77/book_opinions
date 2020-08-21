@@ -38,17 +38,13 @@ class User < ApplicationRecord
     u.followings.find_by(followee_id: id) unless u.nil?
   end
 
-  # def follow(user)
-  #   followings.create(followee_id: user.id)
-  # end
-
   def followed
     follows = followings
-    users = [id]
+    users = []
     follows.each do |f|
-      users << f.followee_id
+      users << f.followee
     end
-    users
+    users << self
   end
 
   def who_to_follow
@@ -58,5 +54,4 @@ class User < ApplicationRecord
   def last_followers
     followees.limit(3)
   end
-
 end

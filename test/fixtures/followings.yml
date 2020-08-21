@@ -7,6 +7,11 @@
 one:
   follower: juan
   followee: yearin
+
 two:
   follower: juan
   followee: ana
+
+three:
+  follower: yearin
+  followee: juan

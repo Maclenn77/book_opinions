@@ -2,7 +2,7 @@ class Opinion < ApplicationRecord
   belongs_to :user
 
   scope :user_opinions, ->(user) { where(user_id: user) }
-  scope :desc, -> { order("created_at DESC")}
+  scope :last_opinions, ->(user) { includes(:user).where(user_id: user.followed).order(created_at: :desc).limit(10) }
 
   def modify_title
     t = title.dup

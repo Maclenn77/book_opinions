@@ -5,13 +5,11 @@ class OpinionsController < ApplicationController
   # GET /opinions
   # GET /opinions.json
   def index
-    @opinion = Opinion.new
-    @opinions = if current_user
-                  timeline_opinions(current_user.followed)
-                else
-                  Opinion.includes(:user).all.desc
-                end
-    @followers = current_user.who_to_follow unless current_user.nil?
+    unless current_user.nil?
+      @opinion = Opinion.new
+      @opinions = Opinion.last_opinions(current_user)
+      @followers = current_user.who_to_follow
+    end
   end
 
   # GET /opinions/1
@@ -74,12 +72,12 @@ class OpinionsController < ApplicationController
       @opinion = Opinion.find(params[:id])
     end
 
-    def timeline_opinions(list_of_followees)
-      timeline_opinions = Opinion.includes(:user).user_opinions(current_user)
-      list_of_followees.each do |followee|
-        timeline_opinions += Opinion.includes(:user).user_opinions(followee)
-      end
-      timeline_opinions
+    def timeline_opinions(user)
+      timeline_opinions = Opinion.last_opinions(user)
+      # list_of_followees.each do |followee|
+      #   timeline_opinions += Opinion.includes(:user).user_opinions(followee)
+      # end
+      # timeline_opinions.sort_by(&:created_at).reverse!
     end
 
     # Only allow a list of trusted parameters through.
