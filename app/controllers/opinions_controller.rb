@@ -72,14 +72,6 @@ class OpinionsController < ApplicationController
       @opinion = Opinion.find(params[:id])
     end
 
-    def timeline_opinions(user)
-      timeline_opinions = Opinion.last_opinions(user)
-      # list_of_followees.each do |followee|
-      #   timeline_opinions += Opinion.includes(:user).user_opinions(followee)
-      # end
-      # timeline_opinions.sort_by(&:created_at).reverse!
-    end
-
     # Only allow a list of trusted parameters through.
     def opinion_params
       params.require(:opinion).permit(:title, :body)

@@ -76,9 +76,9 @@
   <div class="col-3 py-2 border-left">
         <% @followers.each do |f| %>
         <div class="d-flex align-items-center">
-        <%= circle_avatar(f.follower)%>
-        <%= f.follower.fullname %>
-        <i class="material-icons ml-3"><%= follow(f.follower, current_user) %></i>
+        <%= circle_avatar(f)%>
+        <%= f.fullname %>
+        <i class="material-icons ml-3"><%= follow(f, current_user) %></i>
         </div>
         <% end %>
   </div>

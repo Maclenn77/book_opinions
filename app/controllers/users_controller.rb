@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = set_user
-    @followers = @user.last_followers
+    @followers = User.last_followers(@user)
   end
 
   # GET /users/new
