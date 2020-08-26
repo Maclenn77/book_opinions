@@ -8,6 +8,11 @@ class User < ApplicationRecord
   scope :last_users, -> { all.limit(3).order('created_at DESC')}
   scope :last_followers, ->(user) { where(id: user.following).order(created_at: :desc).limit(3) }
 
+  validates :name, presence: true, uniqueness: {message: 'This username is already taken'},
+                   length: { in: 3..10, message: 'Username should be greater
+                             than 3 and shorter than 10 characters' }
+  validates :fullname, presence: {message: 'You need to add your name'},
+                                    length: { in: 3..20, message: 'fullname size'}
   before_create do
     self.token = @token
   end
