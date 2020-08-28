@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   root 'opinions#index'
 
   resources :opinions, only: %i[create edit update]

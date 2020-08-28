@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class LoginFlowTest < ActionDispatch::IntegrationTest
@@ -42,7 +44,7 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
     assert(page.has_content?('Welcome,juan'))
     assert(page.has_content?(opinion.body))
 
-    accept_confirm {click_link('Log out')}
+    accept_confirm { click_link('Log out') }
 
     sleep(3)
 

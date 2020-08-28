@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class OpinionFlowTest < ActionDispatch::IntegrationTest
@@ -33,6 +35,6 @@ class OpinionFlowTest < ActionDispatch::IntegrationTest
 
     visit root_path
 
-    accept_confirm {click_link('Log out')}
+    accept_confirm { click_link('Log out') }
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
@@ -55,9 +57,9 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'doesn\'t includes an user if it\'s not following' do
-      @current_user = users(:juan)
-      @not_following = users(:pedro)
-      refute_includes(@current_user.following, @not_following)
+    @current_user = users(:juan)
+    @not_following = users(:pedro)
+    refute_includes(@current_user.following, @not_following)
   end
 
   test 'invalid user if there\'s not a name' do
@@ -76,7 +78,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'invalid user if there\'s not a fullname' do
-    @new_user = User.create(name: ('john'), fullname: nil)
+    @new_user = User.create(name: 'john', fullname: nil)
     assert_equal(@new_user.valid?, false)
   end
 

@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_one_attached :cover
 
-  scope :last_users, -> { all.limit(3).order('created_at DESC')}
+  scope :last_users, -> { all.limit(3).order('created_at DESC') }
   scope :last_followers, ->(user) { where(id: user.following).order(created_at: :desc).limit(3) }
 
   validates :name, presence: true,
