@@ -1,7 +1,11 @@
 require 'test_helper'
 
-class LoginFlowTest < ActionDispatch::IntegrationTest
-  include SessionsHelper
+class OpinionFlowTest < ActionDispatch::IntegrationTest
+  self.use_instantiated_fixtures = true
+
+  setup do
+    Capybara.current_driver = Capybara.javascript_driver # :selenium by default
+  end
 
   test 'create an new opinion' do
     user = users(:juan)
@@ -29,6 +33,6 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
 
     visit root_path
 
-    click_link('Log out')
+    accept_confirm {click_link('Log out')}
   end
 end

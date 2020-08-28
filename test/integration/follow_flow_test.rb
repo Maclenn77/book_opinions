@@ -1,7 +1,15 @@
 require 'test_helper'
 
-class LoginFlowTest < ActionDispatch::IntegrationTest
+class FollowFlowTest < ActionDispatch::IntegrationTest
   self.use_instantiated_fixtures = true
+
+  teardown do
+    Capybara.reset_sessions!
+  end
+
+  setup do
+    Capybara.current_driver = Capybara.javascript_driver # :selenium by default
+  end
 
   test 'follow and unfollow an user' do
     user = users(:juan)
@@ -29,9 +37,8 @@ class LoginFlowTest < ActionDispatch::IntegrationTest
 
     sleep(3)
 
-    save_and_open_page
+    assert page.has_content?('I am  getting more followers now')
 
-    assert(page.has_content?('I am  getting more followers now'))
     assert page.has_content?('FOLLOWED BY')
 
     click_link('add_circle')

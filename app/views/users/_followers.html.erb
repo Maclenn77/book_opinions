@@ -1,7 +1,7 @@
 <% @followers.each do |user| %>
 <div class="d-flex align-items-center">
   <%= circle_avatar(user) %>
-  <p><b><%= user.fullname %></b></p>
+  <p><b><%= link_to user.fullname, user_path(user)  %></b></p>
   <i class="material-icons ml-3"><%= follow(user, current_user) %></i>
 </div>
 <% end %>

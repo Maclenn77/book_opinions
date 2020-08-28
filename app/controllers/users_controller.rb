@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def show
     @user = set_user
     @followers = User.last_followers(@user)
+    @opinions = @user.opinions
   end
 
   # GET /users/new
