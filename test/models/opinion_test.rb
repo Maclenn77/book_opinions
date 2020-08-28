@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class OpinionTest < ActiveSupport::TestCase
-
   test 'scope of user opinions include the opinion of a user' do
     @user = users(:juan)
     @opinion = opinions(:juan_opinion_one)
@@ -52,7 +53,7 @@ class OpinionTest < ActiveSupport::TestCase
 
   test 'opinion should have a body' do
     user = users(:juan)
-    @new_opinion = user.opinions.create(title: ('Me, robot'), body: nil)
+    @new_opinion = user.opinions.create(title: 'Me, robot', body: nil)
     assert_equal(@new_opinion.valid?, false)
   end
 
@@ -71,7 +72,7 @@ class OpinionTest < ActiveSupport::TestCase
   test 'new opinion is created' do
     user = users(:juan)
     @new_opinion = user.opinions.create(title: 'Me, robot',
-                                  body: 'Good book for humans and robots')
+                                        body: 'Good book for humans and robots')
     assert_equal(@new_opinion.valid?, true)
   end
 end

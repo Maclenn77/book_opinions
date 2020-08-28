@@ -1,5 +1,6 @@
-module UsersHelper
+# frozen_string_literal: true
 
+module UsersHelper
   def user_profile
     if current_user.nil?
       render 'sessions/form'
@@ -24,12 +25,12 @@ module UsersHelper
   end
 
   def show_opinion(user, opinion)
-    link_to(user.fullname, user_path(user), class: 'font-weight-bold') + " said about " + link_to(opinion.title, worldcat_link(opinion), class:"font-italic")
+    link_to(user.fullname, user_path(user), class: 'font-weight-bold') + ' said about ' + link_to(opinion.title, worldcat_link(opinion), class: 'font-italic')
   end
 
   def avatar(user)
     if user.avatar.attached?
-      image_tag user.avatar.variant(combine_options: {resize: '40x40^', extent: '40x40', gravity: 'Center'} ), class: 'avatar m-2 rounded float-left'
+      image_tag user.avatar.variant(combine_options: { resize: '40x40^', extent: '40x40', gravity: 'Center' }), class: 'avatar m-2 rounded float-left'
     else
       image_tag('avatar.png', alt: user.name, width: 40, height: 40, class: 'avatar m-2 rounded float-left')
     end
@@ -37,7 +38,7 @@ module UsersHelper
 
   def circle_avatar(user)
     if user.avatar.attached?
-      image_tag user.avatar.variant(combine_options: {resize: '60x60^', extent: '60x60', gravity: 'Center'} ), class: 'avatar m-2 rounded-circle float-left'
+      image_tag user.avatar.variant(combine_options: { resize: '60x60^', extent: '60x60', gravity: 'Center' }), class: 'avatar m-2 rounded-circle float-left'
     else
       image_tag('avatar.png', alt: user.name, width: 60, height: 60, class: 'avatar m-2 rounded-circle float-left')
     end
@@ -45,7 +46,7 @@ module UsersHelper
 
   def book_cover(user)
     if user.cover.attachment
-      image_tag user.cover.variant(combine_options: {resize: '600x256^', extent: '600x256', gravity: 'Center'}), class: 'cover'
+      image_tag user.cover.variant(combine_options: { resize: '600x256^', extent: '600x256', gravity: 'Center' }), class: 'cover'
     else
       image_tag('cover-default.jpg', alt: 'default cover', width: 600, height: 256, class: 'cover')
     end
@@ -53,7 +54,7 @@ module UsersHelper
 
   def big_circle_avatar(user)
     if user.avatar.attached?
-      image_tag user.avatar.variant(combine_options: {resize: '100x100^', extent: '100x100', gravity: 'Center'} ), class: 'avatar m-2 rounded-circle float-left'
+      image_tag user.avatar.variant(combine_options: { resize: '100x100^', extent: '100x100', gravity: 'Center' }), class: 'avatar m-2 rounded-circle float-left'
     else
       image_tag('avatar.png', alt: user.name, width: 100, height: 100, class: 'avatar m-2 rounded-circle')
     end

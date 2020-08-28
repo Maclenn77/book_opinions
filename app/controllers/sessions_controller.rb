@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   protect_from_forgery with: :exception
   include SessionsHelper
@@ -9,8 +11,12 @@ class SessionsController < ApplicationController
     user = User.find_by_name(params[:session][:name])
     if user.nil?
       flash[:danger] = []
-      flash.now[:danger] << 'Invalid name' unless params[:session][:name].split.empty?
-      flash.now[:danger] << 'Name can not be blank' if params[:session][:name].split.empty?
+      unless params[:session][:name].split.empty?
+        flash.now[:danger] << 'Invalid name'
+      end
+      if params[:session][:name].split.empty?
+        flash.now[:danger] << 'Name can not be blank'
+      end
       render 'new'
     else
       log_in user

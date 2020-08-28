@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class FollowingTest < ActiveSupport::TestCase
@@ -8,7 +10,7 @@ class FollowingTest < ActiveSupport::TestCase
     assert_equal(new_following.valid?, false)
   end
 
-  test "create a valid following" do
+  test 'create a valid following' do
     follower = users(:juan)
     followee = users(:jose)
     new_following = follower.followings.new(followee: followee)

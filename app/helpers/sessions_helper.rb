@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SessionsHelper
   def log_in(user)
     session[:user_id] = user.id
@@ -24,9 +26,11 @@ module SessionsHelper
   end
 
   def session_icon
-    return link_to('exit_to_app', signout_path, class: 'text-dark',
-                   method: :delete, data: { confirm: 'Are you sure ?' }) unless current_user.nil?
-    link_to('power_settings_new', login_path, class: 'text-dark' )
+    unless current_user.nil?
+      return link_to('exit_to_app', signout_path, class: 'text-dark',
+                                                  method: :delete, data: { confirm: 'Are you sure ?' })
+    end
+    link_to('power_settings_new', login_path, class: 'text-dark')
   end
 
   def session_nav

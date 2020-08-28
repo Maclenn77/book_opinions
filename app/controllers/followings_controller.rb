@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FollowingsController < ApplicationController
   def create
     @following = Following.new(follower_id: params[:user_id], followee_id: params[:followee_id])
@@ -15,5 +17,4 @@ class FollowingsController < ApplicationController
   def following_params
     params.require(:following).permit(:follower_id, :followee_id)
   end
-
 end

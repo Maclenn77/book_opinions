@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OpinionsController < ApplicationController
   include SessionsHelper
   before_action :belongs_user, only: %i[edit update destroy]
@@ -21,7 +23,7 @@ class OpinionsController < ApplicationController
   # GET /opinions/1/edit
   def edit; end
 
-  def new;
+  def new
     @opinion = Opinion.new
   end
 
@@ -67,19 +69,20 @@ class OpinionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_opinion
-      @opinion = Opinion.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def opinion_params
-      params.require(:opinion).permit(:title, :body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_opinion
+    @opinion = Opinion.find(params[:id])
+  end
 
-    def belongs_user
-      unless set_opinion.user == current_user
-        redirect_to root_path, notice: 'You only can modify or destroy your own opinions'
-      end
+  # Only allow a list of trusted parameters through.
+  def opinion_params
+    params.require(:opinion).permit(:title, :body)
+  end
+
+  def belongs_user
+    unless set_opinion.user == current_user
+      redirect_to root_path, notice: 'You only can modify or destroy your own opinions'
     end
+  end
 end
