@@ -11,8 +11,11 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: {message: 'This username is already taken'},
                    length: { in: 3..10, message: 'Username should be greater
                              than 3 and shorter than 10 characters' }
-  validates :fullname, presence: {message: 'You need to add your name'},
-                                    length: { in: 3..20, message: 'fullname size'}
+
+  validates :fullname,
+            presence: { message: 'You need to add your name' },
+            length: { in: 3..20, message: 'Fullname is between 3-10 chrs.' }
+
   before_create do
     self.token = @token
   end
