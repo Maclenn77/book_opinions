@@ -11,6 +11,8 @@ yearin:
 pedro:
   name: 'Pedro'
   fullname: 'Pedro Donda'
+  created_at: '2020-08-23 17:48:47'
+  updated_at: '2020-08-23 17:48:47'
 
 ana:
   name: 'Ana'
@@ -19,3 +21,5 @@ ana:
 jose:
   name: 'Jose'
   fullname: 'Jose Jose'
+  created_at: '2018-09-23 17:48:47'
+  updated_at: '2018-09-23 17:48:47'

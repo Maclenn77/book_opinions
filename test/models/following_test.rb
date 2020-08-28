@@ -7,10 +7,10 @@ class FollowingTest < ActiveSupport::TestCase
     new_following = follower.followings.new(followee: followee)
     assert_equal(new_following.valid?, false)
   end
-  
+
   test "create a valid following" do
     follower = users(:juan)
-    followee = users(:pedro)
+    followee = users(:jose)
     new_following = follower.followings.new(followee: followee)
     assert_equal(new_following.valid?, true)
   end

@@ -54,7 +54,7 @@ class User < ApplicationRecord
   end
 
   def who_to_follow
-    User.where.not(id: followed)
+    User.where.not(id: followed).order(created_at: :desc).limit(3)
   end
 
   def following

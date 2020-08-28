@@ -49,3 +49,9 @@ ana_opinion_two:
   title: 'An old book'
   body: 'An old opinion of an old book'
   created_at: '2019-10-21 17:48:47'
+
+pedro_opinion_one:
+  user: pedro
+  title: 'Get more followers'
+  body: 'I am  getting more followers now'
+  created_at: '2020-08-25 16:00:00'
