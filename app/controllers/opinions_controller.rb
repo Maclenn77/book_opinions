@@ -1,6 +1,6 @@
 class OpinionsController < ApplicationController
   include SessionsHelper
-  before_action :set_opinion, only: [:show, :edit, :update, :destroy]
+  before_action :belongs_user, only: %i[edit update destroy]
 
   # GET /opinions
   # GET /opinions.json
@@ -14,8 +14,7 @@ class OpinionsController < ApplicationController
 
   # GET /opinions/1
   # GET /opinions/1.json
-  def show
-  end
+  def show; end
 
   # GET /opinions/new
 
@@ -44,7 +43,6 @@ class OpinionsController < ApplicationController
   # PATCH/PUT /opinions/1.json
   def update
     @opinion = set_opinion
-
     respond_to do |format|
       if @opinion.update(opinion_params)
         format.html { redirect_to root_path, notice: 'Opinion was successfully updated.' }
@@ -75,5 +73,11 @@ class OpinionsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def opinion_params
       params.require(:opinion).permit(:title, :body)
+    end
+
+    def belongs_user
+      unless set_opinion.user == current_user
+        redirect_to root_path, notice: 'You only can modify or destroy your own opinions'
+      end
     end
 end

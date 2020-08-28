@@ -24,7 +24,7 @@
     <%= render 'form', opinion: @opinion unless current_user.nil? %>
   </div>
   <div class="col-3 border-left p-3">
-    <%= render 'users/followers' %>
+    <%= render 'users/followers', followers: @followers %>
   </div>
 </div>
 <div class="row m-0 p-0">

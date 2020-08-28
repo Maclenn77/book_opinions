@@ -1,4 +1,4 @@
-<% @followers.each do |user| %>
+<% followers.each do |user| %>
 <div class="d-flex align-items-center">
   <%= circle_avatar(user) %>
   <p><b><%= link_to user.fullname, user_path(user)  %></b></p>

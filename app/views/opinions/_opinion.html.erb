@@ -4,11 +4,13 @@
   <% opinions.each do |opinion| %>
   <div class="m-2">
     <%= avatar(opinion.user) %>
-    <p class="mb-0"><%= opinion(opinion.user, opinion) %></p>
-    <p class="text-secondary mb-1"><%= opinion.body %></p>
-      <span><%= link_to 'Show', user_opinion_path(opinion.user, opinion) %></span>
-      <span><%= link_to 'Edit', edit_opinion_path(opinion), method: :get %></span>
-      <span><%= link_to 'Destroy', user_opinion_path(opinion.user, opinion), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+    <p class="mb-0 mr-auto"><%= opinion(opinion.user, opinion) %>
+      <span class="text-secondary ml-auto"><%= time_ago_in_words(opinion.created_at) + ' ago' %></span>
+    </p>
+    <p class="text-secondary mb-1 mr-auto"><%= opinion.body %>
+      <span><%= user_edit(opinion) %></span>
+      <span><%= user_destroy(opinion) %></span>
+    </p>
   </div>
   <% end %>
   </div>

@@ -1,5 +1,7 @@
 module ApplicationHelper
   def follow(user, current_user)
+    return nil unless user != current_user
+
     following = user.followed?(current_user)
 
     if following

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include SessionsHelper
 
-  # before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def show
     @user = set_user
     @followers = User.last_followers(@user)
-    @opinions = @user.opinions
+    @opinions = @user.opinions.order(created_at: :desc).limit(10)
   end
 
   # GET /users/new
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to login_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

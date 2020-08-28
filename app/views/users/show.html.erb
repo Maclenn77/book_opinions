@@ -1,5 +1,4 @@
 <div class="row m-0 p-0">
-  <p id="notice"><%= notice %></p>
   <div class="col-2 flex-column bg-dark text-secondary m-0 p-0">
     <div class="row">
       <div class="col">
@@ -61,12 +60,6 @@
   <%= render 'opinions/opinion', opinions: @opinions unless current_user.nil? %>
 
   <div class="col-3 py-2 border-left">
-        <% @followers.each do |f| %>
-        <div class="d-flex align-items-center">
-        <%= circle_avatar(f)%>
-        <%= f.fullname %>
-        <i class="material-icons ml-3"><%= follow(f, current_user) %></i>
-        </div>
-        <% end %>
+        <%= render 'users/followers', followers: @followers %>
   </div>
 </div>
