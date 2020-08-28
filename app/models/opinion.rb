@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This is the model Opinion class
 class Opinion < ApplicationRecord
   belongs_to :user
 

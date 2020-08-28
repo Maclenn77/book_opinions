@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# This Opinion class controller give what do when creating, editing, updating
+# or destroying opinions
 class OpinionsController < ApplicationController
   include SessionsHelper
   before_action :belongs_user, only: %i[edit update destroy]
@@ -5,7 +9,9 @@ class OpinionsController < ApplicationController
   # GET /opinions
   # GET /opinions.json
   def index
-    unless current_user.nil?
+    if current_user.nil?
+      nil
+    else
       @opinion = Opinion.new
       @opinions = Opinion.last_opinions(current_user)
       @followers = current_user.who_to_follow
@@ -21,7 +27,7 @@ class OpinionsController < ApplicationController
   # GET /opinions/1/edit
   def edit; end
 
-  def new;
+  def new
     @opinion = Opinion.new
   end
 
@@ -32,7 +38,7 @@ class OpinionsController < ApplicationController
 
     respond_to do |format|
       if @opinion.save
-        format.html { redirect_to root_path, notice: 'Opinion was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Opinion was created.' }
         format.json { render :show, status: :created, location: @opinion }
       else
         format.html { render :new }
@@ -47,7 +53,7 @@ class OpinionsController < ApplicationController
     @opinion = set_opinion
     respond_to do |format|
       if @opinion.update(opinion_params)
-        format.html { redirect_to root_path, notice: 'Opinion was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Opinion was updated.' }
         format.json { render :show, status: :ok, location: @opinion }
       else
         format.html { render :edit }
@@ -67,19 +73,22 @@ class OpinionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_opinion
-      @opinion = Opinion.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def opinion_params
-      params.require(:opinion).permit(:title, :body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_opinion
+    @opinion = Opinion.find(params[:id])
+  end
 
-    def belongs_user
-      unless set_opinion.user == current_user
-        redirect_to root_path, notice: 'You only can modify or destroy your own opinions'
-      end
+  # Only allow a list of trusted parameters through.
+  def opinion_params
+    params.require(:opinion).permit(:title, :body)
+  end
+
+  def belongs_user
+    if set_opinion.user == current_user
+      nil
+    else
+      redirect_to root_path, notice: 'You only can modify your own opinions'
     end
+  end
 end

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This is the model User class
 class User < ApplicationRecord
   has_many :opinions
   has_many :followings, foreign_key: :follower_id, class_name: 'Following'
@@ -8,7 +11,8 @@ class User < ApplicationRecord
   scope :last_users, -> { all.limit(3).order('created_at DESC')}
   scope :last_followers, ->(user) { where(id: user.following).order(created_at: :desc).limit(3) }
 
-  validates :name, presence: true, uniqueness: {message: 'This username is already taken'},
+  validates :name, presence: true,
+                   uniqueness: { message: 'This username is already taken' },
                    length: { in: 3..10, message: 'Username should be greater
                              than 3 and shorter than 10 characters' }
 
@@ -44,7 +48,7 @@ class User < ApplicationRecord
 
   def followed?(user)
     u = user
-    u.followings.find_by(followee_id: id) unless u.nil?
+    return u.followings.find_by(followee_id: id) unless u.nil?
   end
 
   def followed

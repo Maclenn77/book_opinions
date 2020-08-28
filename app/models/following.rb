@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This Following class is a join table between users that follow and followed
 class Following < ApplicationRecord
   belongs_to :follower, class_name: 'User'
   belongs_to :followee, class_name: 'User'

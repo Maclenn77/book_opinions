@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# This class controller stays what do when creating, editing, updating
+# or destroying opinions
 class SessionsController < ApplicationController
   protect_from_forgery with: :exception
   include SessionsHelper
