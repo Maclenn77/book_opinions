@@ -23,7 +23,7 @@ module UsersHelper
     c.total_opinions unless user.nil?
   end
 
-  def opinion(user, opinion)
+  def show_opinion(user, opinion)
     link_to(user.fullname, user_path(user), class: 'font-weight-bold') + " said about " + link_to(opinion.title, worldcat_link(opinion), class:"font-italic")
   end
 

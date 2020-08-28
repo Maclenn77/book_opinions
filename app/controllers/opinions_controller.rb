@@ -21,7 +21,9 @@ class OpinionsController < ApplicationController
   # GET /opinions/1/edit
   def edit; end
 
-  def new; end
+  def new;
+    @opinion = Opinion.new
+  end
 
   # POST /opinions
   # POST /opinions.json

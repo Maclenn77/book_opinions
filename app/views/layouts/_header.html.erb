@@ -4,7 +4,7 @@
     <span class= 'text-light'><%= flash.notice %></span>
 </nav>
 <div class="justify-content-between bg-primary col-3">
-  <i class="material-icons p-2"><%= link_to 'create', new_user_opinion_path(current_user), class: 'text-dark' unless  current_user.nil? %></i>
+  <i class="material-icons p-2"><%= link_to 'create', new_user_opinion_path(current_user), class: 'text-dark', method: :get unless  current_user.nil? %></i>
   <i class="material-icons p-2"><%= link_to 'settings', edit_user_path(current_user), class: 'text-dark' unless  current_user.nil? %></i>
   <i class="material-icons p-2"><%= session_icon %></i>
 </div>

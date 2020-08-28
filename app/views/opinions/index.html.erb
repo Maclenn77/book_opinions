@@ -17,8 +17,8 @@
 <div class="row m-0 p-0">
   <div class="col-2 flex-column bg-dark text-secondary m-0 p-0">
     <div class="bg-primary p-2 d-flex align-self-center"><i class="material-icons text-light p-1" >home</i><%= link_to 'Home', root_path, class: 'text-light' %></div>
-    <div class="p-2"><i class="material-icons text-light">person</i><%= link_to 'Profile', user_path(current_user), class: 'text-light' unless current_user.nil? %></div>
-    <div class="p-2"><%= link_to 'Log out', signout_path, class: 'text-light', method: :delete, data: {confirm: 'Are you sure ?'} %></div>
+    <div class="p-2 d-flex align-self-center"><i class="material-icons text-secondary">person</i><%= link_to 'Profile', user_path(current_user), class: 'text-secondary' unless current_user.nil? %></div>
+    <div class="p-2 d-flex align-self-center"><i class="material-icons text-secondary">exit_to_app</i><%= link_to 'Log out', signout_path, class: 'text-secondary', method: :delete, data: {confirm: 'Are you sure ?'} %></div>
   </div>
   <div class="col-7">
     <%= render 'form', opinion: @opinion unless current_user.nil? %>

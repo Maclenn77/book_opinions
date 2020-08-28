@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include SessionsHelper
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: %i[show edit update destroy]
 
   # GET /users
   # GET /users.json
@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     @user = set_user
     @followers = User.last_followers(@user)
     @opinions = @user.opinions.order(created_at: :desc).limit(10)
+    @opinion = Opinion.new
   end
 
   # GET /users/new

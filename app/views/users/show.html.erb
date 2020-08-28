@@ -8,8 +8,8 @@
     <div class="row">
       <div class="col">
         <div class="p-2 d-flex align-self-center"><i class="material-icons text-secondary p-1" >home</i><%= link_to 'Home', root_path, class: 'text-secondary' %></div>
-        <div class="bg-primary p-2 align-self-center"><i class="material-icons text-light p-1">person</i><%= link_to 'Profile', user_path(current_user), class: 'text-light' unless current_user.nil? %></div>
-        <div class="p-2"><%= link_to 'Log out', signout_path, class: 'text-secondary', method: :delete, data: {confirm: 'Are you sure ?'} %></div>
+        <div class="bg-primary d-flex p-2 align-self-center"><i class="material-icons text-light p-1">person</i><%= link_to 'Profile', user_path(current_user), class: 'text-light' unless current_user.nil? %></div>
+        <div class="p-2 d-flex align-self-center"><i class="material-icons text-secondary p-1">exit_to_app</i><%= link_to 'Log out', signout_path, class: 'text-secondary', method: :delete, data: {confirm: 'Are you sure ?'} %></div>
       </div>
     </div>
   </div>
@@ -56,10 +56,22 @@
   <div class="col-2 flex-column bg-dark text-secondary m-0 p-0">
 
   </div>
+  <div class="col-7">
+      <%= render 'opinions/form', opinion: @opinion unless current_user.nil? %>
+  </div>
+
+  <div class="col-3 py-2 border-left">
+        <%= render 'users/followers', followers: @followers %>
+  </div>
+</div>
+<div class="row m-0 p-0">
+  <div class="col-2 flex-column bg-dark text-secondary m-0 p-0">
+
+  </div>
 
   <%= render 'opinions/opinion', opinions: @opinions unless current_user.nil? %>
 
   <div class="col-3 py-2 border-left">
-        <%= render 'users/followers', followers: @followers %>
+
   </div>
 </div>

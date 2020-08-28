@@ -4,7 +4,7 @@
   <% opinions.each do |opinion| %>
   <div class="m-2">
     <%= avatar(opinion.user) %>
-    <p class="mb-0 mr-auto"><%= opinion(opinion.user, opinion) %>
+    <p class="mb-0 mr-auto"><%= show_opinion(opinion.user, opinion) %>
       <span class="text-secondary ml-auto"><%= time_ago_in_words(opinion.created_at) + ' ago' %></span>
     </p>
     <p class="text-secondary mb-1 mr-auto"><%= opinion.body %>
