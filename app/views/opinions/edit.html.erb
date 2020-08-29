@@ -1,6 +1,66 @@
-<h1>Editing Opinion</h1>
+<div class="row m-0 p-0">
+  <div class="col-2 flex-column bg-dark text-secondary m-0 p-0">
+    <div class="row">
+      <div class="col">
+        <%= render 'layouts/follows' unless current_user.nil? %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="p-2 d-flex align-self-center"><i class="material-icons text-secondary p-1" >home</i><%= link_to 'Home', root_path, class: 'text-secondary' %></div>
+        <div class="bg-primary d-flex p-2 align-self-center"><i class="material-icons text-light p-1">person</i><%= link_to 'Profile', user_path(current_user), class: 'text-light' unless current_user.nil? %></div>
+        <div class="p-2 d-flex align-self-center"><i class="material-icons text-secondary p-1">exit_to_app</i><%= link_to 'Log out', signout_path, class: 'text-secondary', method: :delete, data: {confirm: 'Are you sure ?'} %></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-7 m-0 p-0">
+    <%= book_cover(@user) %>
+  </div>
+  <div class="col-3 m-0 p-0 align-self-end">
+    <div class="d-flex justify-content-center align-items-center"><i class="material-icons"><%= follow(@user, current_user) %></i>
+      <%= big_circle_avatar(@user) %></div>
+      <p class="text-center"><b><%= @user.fullname %></b></p>
+      <p class="text-center text-secondary"><%= @user.name %></p>
+      <div class="row p-0 m-0">
+          <div class="col border d-flex flex-column justify-content-center align-items-center">
+            <b><%= opinions_of(@user) %></b>
+            <span class="text-secondary">Opinions</span>
+          </div>
+          <div class="col border d-flex flex-column justify-content-center align-items-center">
+            <b><%= followees_of(@user) %></b>
+            <span class="text-secondary">Followers</span>
+          </div>
+          <div class="col border d-flex flex-column justify-content-center align-items-center">
+            <b><%= following_by(@user) %></b>
+            <span class="text-secondary">Following</span>
+          </div>
+      </div>
+    </div>
+</div>
+<div class="row m-0 p-0">
+  <div class="col-2 flex-column bg-dark text-secondary m-0 p-0">
 
-<%= render 'form', opinion: @opinion %>
+  </div>
+  <div class="col-7">
+    <div class="row border-bottom">
+      <div class="col-2 border-bottom border-primary"><p class="h5 p-2 text-secondary"><b>OPINIONS</b></p></div>
+    </div>
+  </div>
+  <div class="col-3 border-left d-flex">
+    <div class="border-bottom p-0 mx-2 d-flex">
+      <h6 class="text-secondary align-self-end"> FOLLOWED BY</h6>
+    </div>
+  </div>
+</div>
+<div class="row m-0 p-0">
+  <div class="col-2 flex-column bg-dark text-secondary m-0 p-0">
 
-<%= link_to 'Show', @opinion %> |
-<%= link_to 'Back', root_path %>
+  </div>
+  <div class="col-7">
+      <%= render 'opinions/form', opinion: @opinion unless current_user.nil? %>
+  </div>
+
+  <div class="col-3 py-2 border-left">
+        <%= render 'users/followers', followers: @followers %>
+  </div>
+</div>

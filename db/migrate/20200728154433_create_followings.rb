@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This create the table
 class CreateFollowings < ActiveRecord::Migration[6.0]
   def change
     create_table :followings do |t|

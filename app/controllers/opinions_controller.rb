@@ -28,7 +28,7 @@ class OpinionsController < ApplicationController
   def edit; end
 
   def new
-    @opinion = Opinion.new
+    @opinion = current_user.opinions.new
   end
 
   # POST /opinions
@@ -39,10 +39,8 @@ class OpinionsController < ApplicationController
     respond_to do |format|
       if @opinion.save
         format.html { redirect_to root_path, notice: 'Opinion was created.' }
-        format.json { render :show, status: :created, location: @opinion }
       else
         format.html { render :new }
-        format.json { render json: @opinion.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -50,14 +48,11 @@ class OpinionsController < ApplicationController
   # PATCH/PUT /opinions/1
   # PATCH/PUT /opinions/1.json
   def update
-    @opinion = set_opinion
     respond_to do |format|
       if @opinion.update(opinion_params)
         format.html { redirect_to root_path, notice: 'Opinion was updated.' }
-        format.json { render :show, status: :ok, location: @opinion }
       else
         format.html { render :edit }
-        format.json { render json: @opinion.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -76,7 +71,9 @@ class OpinionsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_opinion
-    @opinion = Opinion.find(params[:id])
+    @opinion = Opinion.includes(:user).find(params[:id])
+    @user = @opinion.user
+    @followers = User.last_followers(@user)
   end
 
   # Only allow a list of trusted parameters through.
@@ -85,8 +82,9 @@ class OpinionsController < ApplicationController
   end
 
   def belongs_user
-    if set_opinion.user == current_user
-      nil
+    set_opinion
+    if @opinion.user == current_user
+      @opinion
     else
       redirect_to root_path, notice: 'You only can modify your own opinions'
     end

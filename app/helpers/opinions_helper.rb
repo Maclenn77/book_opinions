@@ -8,17 +8,17 @@ module OpinionsHelper
   end
 
   def user_edit(opinion)
-    if current_user == opinion.user
-      link_to('create', edit_opinion_path(opinion),
-              class: 'material-icons', method: :get)
-    end
+    return nil unless current_user == opinion.user
+
+    link_to('create', edit_opinion_path(opinion),
+            class: 'material-icons', method: :get)
   end
 
   def user_destroy(opinion)
-    if current_user == opinion.user
-      link_to('delete', edit_opinion_path(opinion),
-              class: 'material-icons', method: :delete,
-              data: { confirm: 'Are you sure?' })
-    end
+    return nil unless current_user == opinion.user
+
+    link_to('delete', user_opinion_path(opinion.user, opinion),
+            class: 'material-icons', method: :delete,
+            data: { confirm: 'Are you sure?' })
   end
 end
