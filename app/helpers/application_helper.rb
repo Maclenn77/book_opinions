@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This is module ApplicationHelper
 module ApplicationHelper
   def follow(user, current_user)
     return nil unless user != current_user

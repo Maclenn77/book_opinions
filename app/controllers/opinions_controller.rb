@@ -67,7 +67,7 @@ class OpinionsController < ApplicationController
   def destroy
     @opinion.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Opinion was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Opinion was destroyed.' }
       format.json { head :no_content }
     end
   end
