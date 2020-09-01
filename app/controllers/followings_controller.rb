@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This class controller stays what do when creating, editing, updating
 # or destroying opinions
 class FollowingsController < ApplicationController

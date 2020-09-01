@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This module helps to show the Opinions in the view
 module OpinionsHelper
   def worldcat_link(opinion)

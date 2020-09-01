@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This is module for Users
 module UsersHelper
   def user_profile

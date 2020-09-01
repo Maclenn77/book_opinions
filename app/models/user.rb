@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This is the model User class
 class User < ApplicationRecord
   has_many :opinions

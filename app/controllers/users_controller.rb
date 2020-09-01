@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This is the UsersController
 class UsersController < ApplicationController
   include SessionsHelper

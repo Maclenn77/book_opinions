@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This Opinion class controller give what do when creating, editing, updating
 # or destroying opinions
 class OpinionsController < ApplicationController
