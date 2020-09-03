@@ -2,12 +2,15 @@
 class User < ApplicationRecord
   has_many :opinions
   has_many :followings, foreign_key: :follower_id, class_name: 'Following'
-  has_many :followees, foreign_key: :followee_id, class_name: 'Following'
+  has_many :followees, through: :followings
+  has_many :followeds, foreign_key: :followee_id, class_name: 'Following'
+  has_many :followers, through: :followeds
   has_one_attached :avatar
   has_one_attached :cover
 
   scope :last_users, -> { all.limit(3).order('created_at DESC') }
-  scope :last_followers, ->(user) { where(id: user.following).order(created_at: :desc).limit(3) }
+  scope :last_followers, ->(user) { where(id: user.followers).order(created_at: :desc).limit(3) }
+  scope :who_to_follow, ->(user) { where.not(id: user.followees).order(created_at: :desc).limit(3)}
 
   validates :name, presence: true,
                    uniqueness: { message: 'This username is already taken' },
@@ -33,11 +36,11 @@ class User < ApplicationRecord
   end
 
   def total_followed_users
-    followings.count
+    followees.count
   end
 
   def total_followees
-    followees.count
+    followers.count
   end
 
   def total_opinions
@@ -58,12 +61,8 @@ class User < ApplicationRecord
     users << self
   end
 
-  def who_to_follow
-    User.where.not(id: followed).order(created_at: :desc).limit(3)
-  end
-
   def following
-    follows = followees
+    follows = followees.include(:followee)
     users = []
     follows.each do |f|
       users << f.follower

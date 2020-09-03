@@ -12,7 +12,7 @@ class OpinionsController < ApplicationController
     else
       @opinion = Opinion.new
       @opinions = Opinion.last_opinions(current_user)
-      @followers = current_user.who_to_follow
+      @followers = User.who_to_follow(current_user)
     end
   end
 

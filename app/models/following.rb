@@ -3,6 +3,8 @@ class Following < ApplicationRecord
   belongs_to :follower, class_name: 'User'
   belongs_to :followee, class_name: 'User'
 
+  scope :followers, ->(user) { where(followee: user) }
+
   validate :not_same_user
   validate :not_following
 
