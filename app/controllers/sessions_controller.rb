@@ -15,8 +15,8 @@ class SessionsController < ApplicationController
       flash.now[:danger] << 'Name can not be blank' if params[:session][:name].split.empty?
       render 'new'
     else
-      log_in user
-      remember user
+      log_in(user)
+      remember(user)
       redirect_to root_path
     end
   end
