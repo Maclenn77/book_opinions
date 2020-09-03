@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def show
     @user = set_user
     @followers = User.last_followers(@user)
-    @opinions = @user.opinions.order(created_at: :desc).limit(10)
+    @opinions = Opinion.user_opinions(@user)
     @opinion = Opinion.new
   end
 
