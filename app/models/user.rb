@@ -52,21 +52,4 @@ class User < ApplicationRecord
     return u.followings.find_by(followee_id: id) unless u.nil?
   end
 
-  def followed
-    follows = followings
-    users = []
-    follows.each do |f|
-      users << f.followee
-    end
-    users << self
-  end
-
-  def following
-    follows = followees.include(:followee)
-    users = []
-    follows.each do |f|
-      users << f.follower
-    end
-    users
-  end
 end
