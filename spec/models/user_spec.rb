@@ -41,50 +41,44 @@ RSpec.describe User, type: :model do
     end
 
     it 'returns the total of followees of an user' do
-      expect(user.total_followees).to eq(2)
+      expect(user.total_followees).to eq(1)
     end
 
     it 'returns following' do
       @user = users(:juan)
       @following = users(:yearin)
-      expect(@user.followed?(@following)).to eq(true)
+      follow = followings(:three)
+      expect(@user.followed?(@following)).to eq(follow)
     end
 
     it 'returns nil if not following user' do
       @user = users(:juan)
       @following = users(:pedro)
-      expect(@user.followed?(@following)).not_to eq(true)
-    end
-
-    it 'returns an array with followed users' do
-      @user = users(:juan)
-      @followed_one = users(:ana)
-      @followed_two = users(:yearin)
-      followed = @user.followed
-      expect([@followed_one, @followed_two, @user]).to eq(followed)
+      expect(@user.followed?(@following)).to eq(nil)
     end
 
     it 'returns last user not followed by current_user' do
-      @to_follow = users(:jose)
-      expect(user.who_to_follow).to include(@to_follow)
+      user = users(:juan)
+      to_follow = users(:jose)
+      expect(User.who_to_follow(user)).to include(to_follow)
     end
 
     it 'doesn\'t returns a user followed by current_user' do
       @current_user = users(:juan)
       @to_follow = users(:ana)
-      expect(@current_user.who_to_follow).not_to include(@to_follow)
+      expect(User.who_to_follow(@current_user)).not_to include(@to_follow)
     end
 
     it 'returns an array with following users' do
       @current_user = users(:juan)
       @following = users(:yearin)
-      expect([@following]).to include(@current_user.following)
+      expect(@current_user.following_users).to include(@following)
     end
 
     it 'doesn\'t includes an user if it\'s not following' do
       @current_user = users(:juan)
       @not_following = users(:pedro)
-      expect(@current_user.following).to include(@not_following)
+      expect(@current_user.following_users).not_to include(@not_following)
     end
   end
 end
