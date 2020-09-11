@@ -30,7 +30,7 @@ RSpec.describe User, type: :model do
 
   context 'method tests' do
     fixtures :users, :followings, :opinions
-    let(:user) { users(:juan)}
+    let(:user) { users(:juan) }
 
     it 'returns the total followed users' do
       expect(user.total_followed_users).to eq(2)
@@ -45,34 +45,29 @@ RSpec.describe User, type: :model do
     end
 
     it 'returns following' do
-      @user = users(:juan)
       @following = users(:yearin)
       follow = followings(:three)
-      expect(@user.followed?(@following)).to eq(follow)
+      expect(user.followed?(@following)).to eq(follow)
     end
 
     it 'returns nil if not following user' do
-      @user = users(:juan)
       @following = users(:pedro)
-      expect(@user.followed?(@following)).to eq(nil)
+      expect(user.followed?(@following)).to eq(nil)
     end
 
     it 'returns last user not followed by current_user' do
-      user = users(:juan)
       to_follow = users(:jose)
       expect(User.who_to_follow(user)).to include(to_follow)
     end
 
     it 'doesn\'t returns a user followed by current_user' do
-      @current_user = users(:juan)
       @to_follow = users(:ana)
-      expect(User.who_to_follow(@current_user)).not_to include(@to_follow)
+      expect(User.who_to_follow(user)).not_to include(@to_follow)
     end
 
     it 'returns an array with following users' do
-      @user = users(:juan)
       @following = followings(:one)
-      expect(@user.following_users).to include(@following)
+      expect(user.following_users).to include(@following)
     end
   end
 end
