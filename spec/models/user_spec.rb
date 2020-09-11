@@ -70,15 +70,9 @@ RSpec.describe User, type: :model do
     end
 
     it 'returns an array with following users' do
-      @current_user = users(:juan)
-      @following = users(:yearin)
-      expect(@current_user.following_users).to include(@following)
-    end
-
-    it 'doesn\'t includes an user if it\'s not following' do
-      @current_user = users(:juan)
-      @not_following = users(:pedro)
-      expect(@current_user.following_users).not_to include(@not_following)
+      @user = users(:juan)
+      @following = followings(:one)
+      expect(@user.following_users).to include(@following)
     end
   end
 end
