@@ -67,11 +67,16 @@ Validations are defined in the model of each class. New objects need to pass the
 
 You can check specs into the folder 'tests'. Run test with
 
+`$ rspec`
+
+Also, you can run tests with
+
 `$ rails test`
 
 #### Tested with
 
 - Test Unit
+- RSpec
 - Capybara
 
 ### Live Version
