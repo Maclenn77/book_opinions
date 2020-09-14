@@ -43,6 +43,11 @@ RSpec.describe User, type: :model do
     it 'returns the total of followees of an user' do
       expect(user.total_followees).to eq(1)
     end
+  end
+
+  context 'method tests' do
+    fixtures :users, :followings, :opinions
+    let(:user) { users(:juan) }
 
     it 'returns following' do
       @following = users(:yearin)

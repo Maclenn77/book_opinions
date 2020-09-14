@@ -52,7 +52,6 @@ RSpec.describe Opinion, type: :model do
   end
 
   context 'method tests' do
-
     it 'replaces white space with plus sign' do
       opinion = opinions(:juan_opinion_one)
       expect(opinion.modify_title).to eq('Old+book')
