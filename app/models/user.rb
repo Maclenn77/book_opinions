@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   scope :last_users, -> { all.limit(3).order('created_at DESC') }
   scope :last_followers, ->(user) { where(id: user.followers).order(created_at: :desc).limit(3) }
-  scope :who_to_follow, ->(user) { where.not(id: user.followees).order(created_at: :desc).limit(3)}
+  scope :who_to_follow, ->(user) { where.not(id: user.followees).order(created_at: :desc).limit(3) }
 
   validates :name, presence: true,
                    uniqueness: { message: 'This username is already taken' },
@@ -51,5 +51,4 @@ class User < ApplicationRecord
     u = user
     return u.followings.find_by(followee_id: id) unless u.nil?
   end
-
 end
