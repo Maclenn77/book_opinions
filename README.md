@@ -5,6 +5,9 @@ This is a web-app where users can share their opinions about books and book's au
 
 Each time that users create a new opinion, a link to worldcat is generate. In this way, other users can find their recommendations.
 
+For some reason, the video link is not showing in the request. This is the link to the video presentation. ![videolink](https://youtu.be/qoIkSvYIzmc)
+
+
 ### Associations
 
 - **Users** have a username and an email. They can follow other users. They can read book opinions of other people and they can create, edit or destroy their own book opinions.
