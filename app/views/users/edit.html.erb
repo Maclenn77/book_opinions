@@ -1,0 +1,61 @@
+<div class="row m-0 p-0">
+  <div class="col-2 flex-column bg-dark text-secondary m-0 p-0">
+    <div class="row">
+      <div class="col">
+        <%= render 'layouts/follows' unless current_user.nil? %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="p-2 d-flex align-self-center"><i class="material-icons text-light p-1" >home</i><%= link_to 'Home', root_path, class: 'text-light' %></div>
+        <div class="bg-primary p-2 align-self-center"><i class="material-icons text-light p-1">person</i><%= link_to 'Profile', user_path(current_user), class: 'text-light' unless current_user.nil? %></div>
+        <div class="p-2"><%= link_to 'Log out', signout_path, class: 'text-light', method: :delete, data: {confirm: 'Are you sure ?'} %></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-7 m-0 p-0">
+    <%= book_cover(@user) %>
+  </div>
+  <div class="col-3 m-0 p-0 align-self-end">
+    <div class="d-flex justify-content-center align-items-center"><i class="material-icons"><%= follow(@user, current_user) %></i>
+      <%= big_circle_avatar(@user) %></div>
+      <p class="text-center"><b><%= @user.fullname %></b></p>
+      <p class="text-center text-secondary"><%= @user.name %></p>
+      <div class="row p-0 m-0 align-items-end">
+          <div class="col border border-secondary d-flex flex-column justify-content-center align-items-center">
+            <b><%= opinions_of(@user) %></b>
+            <span class="text-secondary">Opinions</span>
+          </div>
+          <div class="col border border-secondary d-flex flex-column justify-content-center align-items-center">
+            <b><%= followees_of(@user) %></b>
+            <span class="text-secondary">Followers</span>
+          </div>
+          <div class="col border border-secondary d-flex flex-column justify-content-center align-items-center">
+            <b><%= following_by(@user) %></b>
+            <span class="text-secondary">Following</span>
+          </div>
+      </div>
+    </div>
+</div>
+<div class="row m-0 p-0">
+  <div class="col-2 flex-column bg-dark text-secondary m-0 p-0">
+
+  </div>
+  <div class="col-7">
+    <div class="bg-light p-2 m-4 rounded border-secondary">
+      <div class="m-2">
+          <span>Edit profile</span>
+      </div>
+
+      <%= render 'form', user: @user %>
+
+      <%= link_to 'Show', @user %> |
+      <%= link_to 'Back', users_path %>
+
+    </div>
+
+  </div>
+  <div class="col-3">
+
+  </div>
+</div>

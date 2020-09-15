@@ -9,7 +9,53 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
  */
+
+$theme-colors: (
+  "primary": #54abed
+);
+
+@import "bootstrap";
+
+body {
+  background-color: #ecf0f1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.fill {
+  height: 100vh;
+}
+
+.cover {
+  width: 100%;
+}
+
+.container {
+  max-width: 100%;
+}
+
+.current_user {
+  font-size: 0.8rem;
+}
+
+span.border-bottom {
+  border-width: 5px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a[rel*="add_circle"] {
+  color: gray;
+}
+
+p.border-bottom {
+  border: 5px;
+}
+
+h5 {
+  font-weight: bold;
+}

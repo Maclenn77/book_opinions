@@ -1,0 +1,17 @@
+<div class="col-7">
+  <div class="bg-light rounded border gray mx-4 p-2">
+    <p class="m-2 p-1 text-primary border-bottom gray">All opinions</p>
+  <% opinions.each do |opinion| %>
+  <div class="m-2">
+    <%= avatar(opinion.user) %>
+    <p class="mb-0 mr-auto"><%= show_opinion(opinion.user, opinion) %>
+      <span class="text-secondary ml-auto"><%= time_ago_in_words(opinion.created_at) + ' ago' %></span>
+    </p>
+    <p class="text-secondary mb-1 mr-auto"><%= opinion.body %>
+      <span><%= user_edit(opinion) %></span>
+      <span><%= user_destroy(opinion) %></span>
+    </p>
+  </div>
+  <% end %>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<% flash.each do |type, message|  %>
+	<%= content_tag :div, class: type.to_s do %>
+		<% message.each do |e| %>
+			<p><%= e %></p>
+		<% end %>
+	<% end %>
+<% end %>

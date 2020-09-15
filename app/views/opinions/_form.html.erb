@@ -1,0 +1,24 @@
+<div class="bg-light rounded border gray m-4 p-2">
+  <small class="h5 text-secondary m-2 py-4">Share your book opinions</small>
+<%= form_with model: @opinion, local: true do |form| %>
+  <% if opinion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(opinion.errors.count, "error") %> prohibited this opinion from being saved:</h2>
+
+      <ul>
+        <% opinion.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="form-group m-2">
+    <%= form.text_field :title, placeholder: "Book's Title or Author. Example: 'Hamlet' or 'Shakespeare'", class: 'form-control center, my-2' %>
+    <%= form.text_area :body, placeholder: 'Comment about the book', class: 'form-control mb-2' %>
+    <div class="actions text-right">
+      <%= form.submit 'Post', class: 'btn btn-primary'%>
+    </div>
+</div>
+<% end %>
+</div>

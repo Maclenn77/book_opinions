@@ -1,0 +1,57 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+juan_opinion_one:
+  user: juan
+  title: 'Old book'
+  body: 'This is an old opinion'
+  created_at: '2019-08-21 17:48:47'
+  updated_at: '2019-08-21 17:48:47'
+
+juan_opinion_two:
+  user: juan
+  title: '1984'
+  body: 'I prefer neo-language version'
+  created_at: '2020-08-20 17:48:47'
+
+juan_opinion_three:
+  user: juan
+  title: 'George Orwell'
+  body: 'One of my favorite authors ever'
+  created_at: '2019-08-21 17:48:47'
+
+yearin_opinion_one:
+  user: yearin
+  title: 'Other Old book'
+  body: 'This is other old opinion'
+  created_at: '2019-09-21 16:48:47'
+  updated_at: '2019-09-21 16:48:47'
+
+yearin_opinion_two:
+  user: yearin
+  title: 'My name is Red'
+  body: 'I dont like books about drawers, but thats just an opinion'
+  created_at: '2020-08-21 16:48:47'
+
+yearin_opinion_three:
+  user: yearin
+  title: 'My name is Blue'
+  body: 'Like the previous book, but in blue'
+  created_at: '2020-08-21 17:48:47'
+
+ana_opinion_one:
+  user: ana
+  title: 'An old book'
+  body: 'An old opinion of an old book'
+  created_at: '2019-10-21 17:48:47'
+
+ana_opinion_two:
+  user: ana
+  title: 'An old book'
+  body: 'An old opinion of an old book'
+  created_at: '2019-10-21 17:48:47'
+
+pedro_opinion_one:
+  user: pedro
+  title: 'Get more followers'
+  body: 'I am  getting more followers now'
+  created_at: '2020-08-25 16:00:00'
