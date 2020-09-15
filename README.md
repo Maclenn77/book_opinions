@@ -76,6 +76,12 @@ Also, you can run tests with
 
 `$ rails test`
 
+If any error relate to selenium webdriver appears, run
+
+`$ bundle install`
+
+If this doesn't solve the problem, open an issue.
+
 #### Tested with
 
 - Test Unit
