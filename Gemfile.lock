@@ -82,15 +82,15 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.10)
     crass (1.0.6)
     diff-lcs (1.4.4)
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.13.1)
-    globalid (0.4.2)
-      activesupport (>= 4.2.0)
-    i18n (1.8.5)
+    globalid (1.0.1)
+      activesupport (>= 5.0)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.11.0)
       mini_magick (>= 4.9.5, < 5)
@@ -118,7 +118,7 @@ GEM
     mini_magick (4.10.1)
     mini_mime (1.0.2)
     mini_portile2 (2.8.0)
-    minitest (5.14.1)
+    minitest (5.17.0)
     minitest-reporters (1.4.2)
       ansi
       builder
@@ -223,7 +223,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.7)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     uniform_notifier (1.13.0)
     web-console (4.0.4)
@@ -244,7 +244,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.0)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   ruby
